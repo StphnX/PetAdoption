@@ -16,7 +16,7 @@ const getAllPets = asyncHandler(async (req, res, next) => {
         });
         res.status(200).json(results);
     } else {
-        const results = await Pet.find({}, { name: 1, age: 1, gender: 1, animal_type: 1, breed: 1, health_status: 1, address: 1, postcode: 1, _id: 0 });
+        const results = await Pet.find({}, { name: 1, age: 1, gender: 1, animal_type: 1, breed: 1, health_status: 1, address: 1, zipcode: 1, _id: 0, description: 1 });
 
         res.status(200).json(results);
     }
@@ -72,4 +72,25 @@ const getSinglePetInfo = asyncHandler(async (req, res, next) => {
     res.status(200).json(retObj);
 });
 
-export { getAllPets, getSinglePet, getSinglePetInfo };
+const postNewPet = asyncHandler(async (req, res) => {
+    try {
+        const newData = req.body;
+
+        const newPet = new Pet(newData);
+
+        await newPet.save()
+        res.status(201).json({ message: 'New pet entry created successfully!', data: newPet });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Error creating pet entry' });
+    }
+
+});
+
+
+
+
+
+
+
+export { getAllPets, getSinglePet, getSinglePetInfo, postNewPet };
