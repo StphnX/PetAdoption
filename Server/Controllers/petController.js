@@ -1,5 +1,5 @@
 import asyncHandler from "express-async-handler";
-import Pet from "../schemas/petSchema";
+import Pet from "../schemas/petSchema.js";
 
 //GET all pokemon
 const getAllPets = asyncHandler(async (req, res, next) => {
