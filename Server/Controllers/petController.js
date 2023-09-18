@@ -1,5 +1,6 @@
 import asyncHandler from "express-async-handler";
 import PetModel from "../schemas/petSchema.js";
+import mongoose from "mongoose";
 
 //GET all pokemon
 const getAllPets = asyncHandler(async (req, res, next) => {
@@ -79,9 +80,31 @@ const postNewPet = asyncHandler(async (req, res) => {
 });
 
 
+const deletePet = asyncHandler(async (req, res) => {
+    try {
+        const petId = req.params.id;
+
+        // Check if the provided ID is valid
+        if (!mongoose.Types.ObjectId.isValid(petId)) {
+            return res.status(400).json({ error: 'Invalid ID format' });
+        }
+
+        // Attempt to delete the pet by its ID
+        const deletedPet = await PetModel.findByIdAndRemove(petId).exec();
+
+        // Check if the pet was found and deleted
+        if (!deletedPet) {
+            return res.status(404).json({ error: 'Pet not found' });
+        }
+
+        res.json({ message: 'Pet deleted successfully', deletedPet });
+    } catch (error) {
+        console.error(error); // Log the error for debugging
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 
 
 
 
-
-export { getAllPets, getSinglePet, postNewPet, getAllPetsByProp };
+export { getAllPets, getSinglePet, postNewPet, getAllPetsByProp, deletePet };
