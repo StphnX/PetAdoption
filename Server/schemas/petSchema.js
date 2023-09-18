@@ -10,6 +10,7 @@ const petSchema = new Schema({
     health_status: { type: String, required: true },
     address: { type: String, required: true },
     zipcode: { type: String, required: true },
+    picture: { type: String, required: true },
     description: { type: String, required: true },
 
 
