@@ -3,12 +3,12 @@ import {
     getAllPets,
     getSinglePet,
     getSinglePetInfo,
-} from "../Controllers/pokemonController.js";
+} from "../Controllers/petController.js";
 
 const petRouter = Router();
 
-pokemonRouter.route("/allPets").get(getAllPets);
-pokemonRouter.route("/:id").get(getSinglePet);
-pokemonRouter.route("/:id/:prop").get(getSinglePetInfo);
+petRouter.route("/allPets").get(getAllPets);
+petRouter.route("/:id").get(getSinglePet);
+petRouter.route("/:id/:prop").get(getSinglePetInfo);
 
 export default petRouter;

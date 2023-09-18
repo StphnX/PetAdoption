@@ -9,7 +9,8 @@ const petSchema = new Schema({
     animal_type: { type: String, required: true },
     health_status: { type: String, required: true },
     address: { type: String, required: true },
-    postcode: { type: String, required: true },
+    zipcode: { type: String, required: true },
+    description: { type: String, required: true },
 
 
 
