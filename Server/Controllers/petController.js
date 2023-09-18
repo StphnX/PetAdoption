@@ -79,6 +79,35 @@ const postNewPet = asyncHandler(async (req, res) => {
 
 });
 
+const editPet = asyncHandler(async (req, res) => {
+
+    try {
+        const petId = req.params.id;
+
+        // Check if the provided ID is valid
+        if (!mongoose.Types.ObjectId.isValid(petId)) {
+            return res.status(400).json({ error: 'Invalid ID format' });
+        }
+
+        // Update the pet using findByIdAndUpdate
+        const updatedPet = await PetModel.findByIdAndUpdate(
+            petId,
+            req.body, // Assuming the request body contains the updated pet data
+            { new: true } // Return the updated document
+        ).exec();
+
+        // Check if the pet was found and updated
+        if (!updatedPet) {
+            return res.status(404).json({ error: 'Pet not found' });
+        }
+
+        res.json({ message: 'Pet updated successfully', updatedPet });
+    } catch (error) {
+        // Handle any errors that occur during the update
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 
 const deletePet = asyncHandler(async (req, res) => {
     try {
@@ -107,4 +136,4 @@ const deletePet = asyncHandler(async (req, res) => {
 
 
 
-export { getAllPets, getSinglePet, postNewPet, getAllPetsByProp, deletePet };
+export { getAllPets, getSinglePet, postNewPet, getAllPetsByProp, editPet, deletePet };
