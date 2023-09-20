@@ -1,5 +1,6 @@
 import User from "../schemas/User.js";
 import jwt from "jsonwebtoken";
+import bodyParser from "body-parser";
 
 // handle errors
 const handleErrors = (err) => {
@@ -55,7 +56,7 @@ const login_get = (req, res) => {
 
 const signup_post = async (req, res) => {
     const { email, password, Username } = req.body;
-
+    console.log(req.body);
     try {
         const user = await User.create({ email, password, Username });
         const token = createToken(user._id);

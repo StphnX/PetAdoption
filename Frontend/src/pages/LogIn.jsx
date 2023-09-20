@@ -1,12 +1,9 @@
 import React from "react";
-import Menu from "../components/Menu";
-import Footer from "../components/Footer";
 
 function LogIn () {
 
     return (
         <>
-        <Menu />
         <main>
             <h1 className="margin">Log in to your account:</h1>
                 <form action="" className="sign-up-form">
@@ -21,7 +18,6 @@ function LogIn () {
                     <button className="sign-up-form-button" type="submit">Submit</button>
                 </form>
         </main>
-        <Footer />
         </>
     );
 }

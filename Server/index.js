@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import { MongoClient } from "mongodb";
 import fs from "fs";
+import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import db from "./db/mongodb.js";
 import errorHandler from "./middleware/errorHandling.js";
@@ -26,6 +27,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
+app.use(bodyParser.json());
 
 app.use("/", petRouter);
 app.use(authRoutes);
