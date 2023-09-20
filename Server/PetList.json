@@ -1,0 +1,122 @@
+[
+    {
+        "name": "Max",
+        "age": "4",
+        "gender": "male",
+        "animal_type": "dog",
+        "breed": " Labrador Retriever mix",
+        "health_status": "healthy",
+        "address": "Meininger Strasse 20",
+        "zipcode": "66585,Merchweiler",
+        "picture": "https://images.unsplash.com/photo-1585837199856-c48debc16374?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2030&q=80",
+        "description": "Meet Max, a charming and lovable Labrador Retriever mix with a heart of gold. This four-year-old pup boasts a sleek ebony coat that glistens in the sunlight, complemented by soulful, expressive brown eyes that will melt your heart. Max is a medium-sized dog, making him the perfect companion for both indoor and outdoor adventures.Max is not just a pretty face; he's also incredibly intelligent and eager to please. He thrives on human interaction and is always up for a game of fetch or a long walk in the park. Max's friendly and outgoing nature makes him great with kids, and he gets along well with other dogs too.Despite his energetic side, Max also knows how to relax and enjoys cozying up on the couch with his favorite humans. He's housetrained, obedient, and ready to become a loyal addition to your family. If you're searching for a loyal and affectionate furry friend, Max could be the perfect match for you. Come meet Max today and experience the joy he brings into every day!"
+    },
+    {
+        "name": "Bella",
+        "age": "3",
+        "gender": "female",
+        "animal_type": "dog",
+        "breed": "Dachshund mix",
+        "health_status": "light skin issues",
+        "address": "Budapester Straße 2",
+        "zipcode": "35232,Dautphetal",
+        "picture": "https://images.unsplash.com/photo-1621757298825-7ab62e5a953b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+        "description": "Meet Bella, a delightful Dachshund mix with a personality as unique as her long, expressive ears. At three years old, Bella is the ideal size for apartment living and cuddling on the couch. Her soft, chestnut-colored fur is perfect for burying your face in during those cozy moments together.Bella is a true social butterfly, and her wagging tail and sparkling hazel eyes will greet everyone with warmth and affection. She's quick to learn new tricks and loves to show off her impressive repertoire, making her a joy to train. Bella also adores children and other pets, making her a perfect fit for a family.Don't let her playful antics fool you; Bella also knows how to relax. She'll happily curl up with you for a movie night or a good book. If you're seeking a loving, spirited companion, Bella is ready to become your new best friend. Bring Bella into your life, and you'll experience the boundless love she has to offer."
+    },
+    {
+        "name": "Charlie",
+        "age": "2",
+        "gender": "male",
+        "animal_type": "dog",
+        "breed": "Cocker Spaniel",
+        "health_status": "healthy",
+        "address": "Brandenburgische Str. 74",
+        "zipcode": "76332,Bad Herrenalb",
+        "picture": "https://images.unsplash.com/photo-1548937652-a0f1a3e1ce40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80",
+        "description": "Introducing Charlie, a charismatic Cocker Spaniel mix who's ready to win your heart. At just two years old, Charlie has a striking caramel and white coat that's soft to the touch. His soulful, expressive eyes radiate warmth and kindness.Charlie is an energetic and playful pup, always up for a game of fetch or a romp in the yard. He's an eager learner, making him a breeze to train, and he can't resist the opportunity to show off his tricks. Charlie's friendly disposition extends to all, from children to other dogs, making him a great fit for families.Despite his boundless energy, Charlie has a gentle side and enjoys snuggling up with his humans. He's house-trained and well-behaved, ready to make a smooth transition into your loving home. If you're searching for an affectionate and joyful companion, Charlie is waiting to bring sunshine into your life."
+    },
+    {
+        "name": "Luna",
+        "age": "1",
+        "gender": "female",
+        "animal_type": "dog",
+        "breed": "Siberian Husky",
+        "health_status": "healthy",
+        "address": "Leipziger Strasse 78",
+        "zipcode": "33619,Bielefeld Schröttinghausen",
+        "picture": "https://images.unsplash.com/photo-1627220832671-b8fbf262f5cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+        "description": "Say hello to Luna, a stunning Siberian Husky with enchanting icy blue eyes that will capture your heart. Luna is just one year old, with a striking black and white coat that stands out in a crowd. Her elegant appearance is matched by her playful and spirited personality.Luna is a bundle of energy, always eager for outdoor adventures and exercise. She's intelligent and thrives on mental stimulation, making her a fantastic partner for training and interactive play. Luna's friendly nature extends to people and other dogs, making her a wonderful addition to any household.When she's not exploring the great outdoors, Luna enjoys cozy moments by your side. Her sweet and affectionate demeanor will make you feel loved and cherished every day. If you're seeking a loyal and active companion, Luna is ready to embark on countless adventures with you."
+    },
+    {
+        "name": "Rocky",
+        "age": "4",
+        "gender": "male",
+        "animal_type": "dog",
+        "breed": "Rottweiler",
+        "health_status": "temporary ear infection. Already in treatment",
+        "address": "Ollenhauer Str. 85",
+        "zipcode": "70599,Stuttgart Hohenheim",
+        "picture": "https://images.unsplash.com/photo-1643505339041-5f6328214385?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+        "description": "Meet Rocky, a ruggedly handsome Rottweiler mix who's as strong as he is sweet. At four years old, Rocky has a striking black and tan coat that accentuates his muscular build. His deep brown eyes radiate loyalty and affection.Rocky is a gentle giant with a heart of gold. Despite his imposing appearance, he's incredibly friendly and loves to meet new people. He's a quick learner and excels at obedience training, making him a pleasure to have by your side. Rocky also gets along well with other dogs and is known for his gentle playfulness.When it's time to wind down, Rocky enjoys lounging with his family, eager to offer cuddles and companionship. If you're searching for a devoted and protective companion, Rocky is ready to become your loyal guardian and trusted friend. Bring Rocky into your life, and you'll experience the love and security he brings to your home."
+    },
+    {
+        "name": "Whiskers",
+        "age": "3",
+        "gender": "male",
+        "animal_type": "cat",
+        "breed": "domestic shorthair",
+        "health_status": "healthy",
+        "address": "Gotzkowskystraße 48",
+        "zipcode": "59823,Arnsberg",
+        "picture": "https://images.unsplash.com/photo-1601567815331-6d750d0db4b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+        "description": "Meet Whiskers, a dashing domestic shorthair with a personality as charming as his name. Whiskers is a three-year-old feline with a sleek black coat that shimmers in the sunlight, and his striking green eyes are utterly captivating. He's of medium size, making him a perfect fit for both apartments and houses.Whiskers is an independent yet affectionate cat who enjoys curling up in your lap or next to you on the couch. He's a playful and curious kitty.If you're looking for a loyal and entertaining feline companion, Whiskers is the one. He's litter-trained and ready to bring joy and companionship into your life. Come meet Whiskers today and discover the endless love he has to offer."
+    },
+    {
+        "name": "Luna",
+        "age": "1",
+        "gender": "female",
+        "animal_type": "cat",
+        "breed": "siamese mix",
+        "health_status": "healthy",
+        "address": "Langenhorner Chaussee 32",
+        "zipcode": "84103,Postau",
+        "picture": "https://images.unsplash.com/photo-1568309386325-ef86f13ac533?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+        "description": "Say hello to Luna, a stunning Siamese mix with striking blue almond-shaped eyes and a coat as soft as silk. Luna is a one-year-old beauty who stands out in any room with her creamy beige fur and distinctive dark points on her ears, face, paws, and tail.Luna is a social and outgoing cat who loves to be the center of attention. She's a vocal kitty who enjoys 'conversations' with her human friends, and her playful nature shines through during interactive playtime. Luna's affectionate and gentle, making her an ideal choice for families or individuals seeking a loving companion.When she's not engaging in playful antics, Luna enjoys lounging in sunny spots or snuggling up with her favorite people. If you're searching for a loving and expressive feline friend, Luna is ready to grace your home with her charm and companionship."
+    },
+    {
+        "name": "Oliver",
+        "age": "2",
+        "gender": "male",
+        "animal_type": "cat",
+        "breed": "orange tabby",
+        "health_status": "healthy",
+        "address": "Budapester Straße 27",
+        "zipcode": "54343,Föhren",
+        "picture": "https://images.unsplash.com/photo-1581898262339-10bac03c5818?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+        "description": "Meet Oliver, an adorable orange tabby with a heart full of love to share. Oliver is a two-year-old cat with a plush coat of orange and white stripes that beckons you to reach out and give him a gentle scratch behind the ears. His large, expressive green eyes will capture your heart from the moment you meet him.Oliver is a sweet and affectionate cat who adores being in the company of his human friends. He's a playful kitty who enjoys chasing feather toys and pouncing on catnip mice. Oliver is also known for his easygoing nature and gets along well with children and other cats, making him a versatile addition to any home.After a day of play, Oliver is more than happy to snuggle up with you for some relaxation. If you're looking for a loving and playful feline companion, Oliver is eager to become a cherished member of your family."
+    },
+    {
+        "name": "Milo",
+        "age": "3",
+        "gender": "male",
+        "animal_type": "cat",
+        "breed": "classic black&white",
+        "health_status": "a little overweight",
+        "address": "Rudolstaedter Strasse 30",
+        "zipcode": "63701,Aschaffenburg",
+        "picture": "https://images.unsplash.com/photo-1572129563019-6765c0e5e5fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80",
+        "description": " Introducing Milo, a handsome tuxedo cat with a heart full of love to give. Milo is a three-year-old feline with a classic black and white coat that exudes elegance and charm. His bright green eyes and dashing tuxedo markings make him a striking and unforgettable companion.Milo is a social and affectionate cat who enjoys spending quality time with his human friends. He's a playful kitty who loves chasing after feather toys and batting at strings. Milo's friendly nature extends to children and other cats, making him a versatile addition to any household.After a day of play and adventure, Milo loves nothing more than cuddling up with you, purring contentedly as you share quiet moments together. If you're seeking a loving and dapper feline companion, Milo is ready to become your cherished friend and confidant."
+    },
+    {
+        "name": "Marmelade",
+        "age": "2",
+        "gender": "male",
+        "animal_type": "cat",
+        "breed": "orange tabby",
+        "health_status": "healthy",
+        "address": "Pappelallee 34",
+        "zipcode": "17440,Bauer",
+        "picture": "https://images.unsplash.com/photo-1667518158890-0a6cf60de601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+        "description": "Introducing Marmalade, a charismatic ginger tabby cat with a personality as vibrant as his striking coat. At two years old, Marmalade is in his prime and exudes an air of confidence and charm. His bright green eyes sparkle with intelligence and a hint of mischief.Marmalade is a playful and spirited kitty who enjoys chasing feather toys and curling up in cozy spots by the window to watch the world go by. He's quick to form a strong bond with his human companions and delights in affectionate pets and cuddles. Marmalade's friendly nature extends to other cats, making him a wonderful choice for a multi-cat household.When the day's adventures are done, Marmalade loves nothing more than settling into a warm lap for a purring session. He's litter-trained and knows how to use his scratching post. If you're seeking a charismatic and loving feline friend to add sunshine to your days, Marmalade is ready to become your cherished companion, offering endless joy and companionship. Come meet Marmalade today and let him brighten your life with his radiant presence!"
+    }
+]
