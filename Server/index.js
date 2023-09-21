@@ -28,6 +28,13 @@ app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
 app.use(bodyParser.json());
+// DEBUGGING MIDDLEWARE ONLY MEANT TO BE USED DURING DEVELOPMENT
+// app.use((req,res, next) => {
+//   console.log('METHOD: '+req.method);
+//   console.log('PATH: '+req.path);
+//   console.log(req.body)
+//   next()
+// })
 
 app.use("/", petRouter);
 app.use(authRoutes);
