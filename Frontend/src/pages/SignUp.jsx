@@ -21,12 +21,20 @@ function SignUp () {
         event.preventDefault();
         
     try {
-        console.log(formData);
         const jsonData = JSON.stringify(formData);
-        const response = await axios.post('http://localhost:3000/signup', jsonData);
+        const response = await axios.post(
+            'http://localhost:3000/signup',
+            jsonData,
+            {
+                headers:{
+                    "Content-Type": "application/json"
+                }
+            }
+        );
   
-        if (response.status === 200) {
+        if (response.status === 201) {
             console.log('Data successfully submitted');
+            // use useNavigate to navigate to the login page and fill out the information with the email and password from the current user that allready created an account succesfully
         } else {
             console.error('Server error:', response.data);
         }
