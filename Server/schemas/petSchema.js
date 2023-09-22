@@ -12,6 +12,7 @@ const petSchema = new Schema({
     zipcode: { type: String, required: true },
     picture: { type: String, required: true },
     description: { type: String, required: true },
+    picture: { type: String, required: true }
 
 
 

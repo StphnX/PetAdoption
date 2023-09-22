@@ -17,7 +17,7 @@ const getAllPets = asyncHandler(async (req, res, next) => {
         });
         res.status(200).json(results);
     } else {
-        const results = await PetModel.find({}, { name: 1, age: 1, gender: 1, animal_type: 1, breed: 1, health_status: 1, address: 1, zipcode: 1, _id: 0, description: 1 });
+        const results = await PetModel.find({}, { name: 1, age: 1, gender: 1, animal_type: 1, breed: 1, health_status: 1, address: 1, zipcode: 1, _id: 0, description: 1, picture: 1 });
 
         res.status(200).json(results);
     }
