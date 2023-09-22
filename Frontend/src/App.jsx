@@ -10,6 +10,7 @@ import LogIn from './pages/LogIn';
 import About from './pages/About';
 import CreateAdd from './pages/CreateAdd';
 import Messages from './pages/Messages';
+import Pets from './pages/Pets';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <Route path='/about' element={<About/>} />
         <Route path='/createadd' element={<CreateAdd/>} />
         <Route path='/messages' element={<Messages/>} />
+        <Route path='/pets' element={<Pets/>} />
       </Routes>
     </>
   );

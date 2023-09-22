@@ -16,7 +16,7 @@ function Home () {
         <>
             <Menu />
             <Header />
-            
+
             <div className="companion-container">
             <h2>Meet Your Future Companion</h2>
                 <div className="pics-container">

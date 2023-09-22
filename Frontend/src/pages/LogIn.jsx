@@ -1,19 +1,73 @@
 import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useState, useEffect } from "react";
+
 
 function LogIn () {
+
+    const location = useLocation();
+    const navigate = useNavigate();
+    
+    const initialLoginData = {
+        email: location.state?.email || "",
+        password: location.state?.password
+    };
+
+    const [loginData, setLoginData] = useState(initialLoginData);
+
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+
+        setLoginData({ ...loginData, [name]: value });
+      }
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        try {
+            const jsonData = JSON.stringify(loginData);
+            const response = await axios.post(
+                'http://localhost:3000/login',
+                jsonData,
+                {
+                    headers:{
+                        "Content-Type": "application/json"
+                    }
+                }
+            );
+      
+            if (response.status === 200) {
+                console.log('User succesfully logged in');
+                navigate("/", 
+                {
+                    // state: {
+                    //     email: formData.email,
+                    //     password: formData.password
+                    // }
+                });
+
+            } else {
+                console.error('Server error:', response.data);
+            }
+          } catch (error) {
+            console.error('Network error:', error.message);
+          }
+    }
 
     return (
         <>
         <main>
             <h1 className="margin">Log in to your account:</h1>
-                <form action="" className="sign-up-form">
+                <form action="" className="sign-up-form" onSubmit={handleSubmit}>
                     <div className="input-container">
-                        <label for="name">First name:</label><br></br>
-                        <input type="text" id="name" />
+                        <label htmlFor="email">Email:</label><br></br>
+                        <input type="text" id="email" value={loginData.email} onChange={handleInputChange}/>
                     </div>
                     <div className="input-container">
-                        <label for="surname">Last name:</label><br></br>
-                        <input type="text" id="surname"/>
+                        <label htmlFor="password">Password:</label><br></br>
+                        <input type="text" id="password" value={loginData.password} onChange={handleInputChange}/>
                     </div>
                     <button className="sign-up-form-button" type="submit">Submit</button>
                 </form>
