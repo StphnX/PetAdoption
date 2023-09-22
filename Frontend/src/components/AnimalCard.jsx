@@ -7,6 +7,7 @@ function AnimalCard ({pet}){
         <>
             <figure className="animal-pic-container">
                 <img className="animal-pic" src={pet.picture} alt={pet.name} />
+                <h2>{pet.name}</h2>
             </figure>
         </>
     );
