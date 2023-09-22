@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 function SignUp () {
@@ -10,6 +11,10 @@ function SignUp () {
         Username: ''
       });
 
+      const [errorMessage, setErrorMessage] = useState("");
+
+      const navigate = useNavigate();
+
     const handleInputChange = (event) => {
         const { name, value } = event.target;
 
@@ -18,30 +23,48 @@ function SignUp () {
 
       
     const handleSubmit = async (event) => {
+
         event.preventDefault();
+
         
-    try {
-        const jsonData = JSON.stringify(formData);
-        const response = await axios.post(
-            'http://localhost:3000/signup',
-            jsonData,
-            {
-                headers:{
-                    "Content-Type": "application/json"
+        try {
+            const jsonData = JSON.stringify(formData);
+            const response = await axios.post(
+                'http://localhost:3000/signup',
+                jsonData,
+                {
+                    headers:{
+                        "Content-Type": "application/json"
+                    }
                 }
-            }
-        );
-  
+            );
+    
         if (response.status === 201) {
             console.log('Data successfully submitted');
-            // use useNavigate to navigate to the login page and fill out the information with the email and password from the current user that allready created an account succesfully
-        } else {
-            console.error('Server error:', response.data);
-        }
+            navigate("/login", 
+            {
+                state: {
+                    email: formData.email,
+                    password: formData.password
+                }
+            });
+
+        } 
       } catch (error) {
-        console.error('Network error:', error.message);
-      }
-       
+
+
+        if (error.response.data.errors.email) {
+            setErrorMessage(error.response.data.errors.email);
+        } else if (error.response.data.errors.password) {
+            setErrorMessage(error.response.data.errors.password);
+        } else {
+            setErrorMessage("An error occurred.");
+        }
+            
+
+        // console.error('Network error:', error.message);
+        // setErrorMessage(error.response.data.errors.email);   
+        }
     }
 
     return (
@@ -62,6 +85,7 @@ function SignUp () {
                 </div>
                 <button className="sign-up-form-button" type="submit">Submit</button>
             </form>
+            {errorMessage && <div className="error-message">{errorMessage}</div>}
         </>
     );
 }
