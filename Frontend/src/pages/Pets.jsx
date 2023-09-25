@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import AnimalCard from "../components/AnimalCard";
 import { NavLink } from "react-router-dom";
 
+
+
 function Pets() {
 
     const [pets, setPets] = useState([]);
@@ -34,6 +36,10 @@ function Pets() {
                         <AnimalCard pet={pet}/>
                     </NavLink>
                 ))}
+
+            <h1>Pets that are currently looking for a new home:</h1>
+            <div className="animal-card-container">
+                {pets.map((pet) => <AnimalCard pet={pet}/>)}
             </div>
         </>
     );

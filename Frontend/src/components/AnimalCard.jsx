@@ -11,6 +11,11 @@ function AnimalCard ({pet}){
             <figure className="animal-pic-container box">
                 <img className="animal-pic" src={pet.picture} alt={pet.name} />
                 <figcaption>{pet.name}</figcaption>
+
+    return (
+        <>
+            <figure className="animal-pic-container">
+                <img className="animal-pic" src={pet.picture} alt={pet.name} />
             </figure>
         </>
     );

@@ -17,6 +17,8 @@ import LoggedInHomepage from './pages/LoggedInHomepage';
 import UserProfile from './pages/UserProfile';
 import WriteMessage from './components/WriteMessage';
 import NotFound from './pages/NotFound';
+import Pets from './pages/Pets';
+
 
 function App() {
 
