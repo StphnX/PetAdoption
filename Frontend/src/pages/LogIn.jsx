@@ -3,6 +3,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useState, useEffect } from "react";
+
 
 function LogIn () {
 
@@ -61,6 +65,7 @@ function LogIn () {
         <>
         <main>
             <h1 className="margin">Log in to your account:</h1>
+                <form action="" className="sign-up-form" onSubmit={handleSubmit}>
                 <form action="" className="sign-up-form" onSubmit={handleSubmit}>
                     <div className="input-container">
                         <label htmlFor="email">Email:</label><br></br>
