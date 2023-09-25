@@ -11,7 +11,7 @@ function LogIn () {
     
     const initialLoginData = {
         email: location.state?.email || "",
-        password: location.state?.password
+        password: location.state?.password || ""
     };
 
     const [loginData, setLoginData] = useState(initialLoginData);
@@ -27,6 +27,7 @@ function LogIn () {
         event.preventDefault();
 
         try {
+            console.log(loginData);
             const jsonData = JSON.stringify(loginData);
             const response = await axios.post(
                 'http://localhost:3000/login',
@@ -40,7 +41,7 @@ function LogIn () {
       
             if (response.status === 200) {
                 console.log('User succesfully logged in');
-                navigate("/", 
+                navigate("/home", 
                 {
                     // state: {
                     //     email: formData.email,
@@ -63,11 +64,11 @@ function LogIn () {
                 <form action="" className="sign-up-form" onSubmit={handleSubmit}>
                     <div className="input-container">
                         <label htmlFor="email">Email:</label><br></br>
-                        <input type="text" id="email" value={loginData.email} onChange={handleInputChange}/>
+                        <input className="box" type="text" id="email" name="email" value={loginData.email} onChange={handleInputChange}/>
                     </div>
                     <div className="input-container">
                         <label htmlFor="password">Password:</label><br></br>
-                        <input type="text" id="password" value={loginData.password} onChange={handleInputChange}/>
+                        <input className="box" type="password" id="password" name="password" value={loginData.password} onChange={handleInputChange}/>
                     </div>
                     <button className="sign-up-form-button" type="submit">Submit</button>
                 </form>

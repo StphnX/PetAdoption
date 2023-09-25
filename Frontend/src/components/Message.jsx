@@ -3,7 +3,10 @@ import React from "react";
 function Message () {
 
     return (
-        <><h1>Individual message here</h1></>
+        <><div className="box">
+            <h2>Message title here</h2>
+            </div>
+        </>
     );
 }
 

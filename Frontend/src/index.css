@@ -56,7 +56,6 @@ p, h1, h2, h3, h4, h5, h6 {
   --textColor: #3a3042;
   --backgroundColor:  #db9d47;
   --accentColor:  #f9f5ec;
-
   --borderColor: #3a3042;
   
   background-color: var(--backgroundColor);
@@ -99,6 +98,13 @@ h1.margin{
 
 main{
   flex-grow: 1;
+}
+
+.box {
+  background-color: var(--accentColor);
+  border: 2px solid var(--borderColor);
+  box-shadow: 5px 5px;
+  border-radius: 10px;
 }
 
 /*-------------------- Menu bar --------------------*/
@@ -246,17 +252,13 @@ a.button:active {
 /*-------------------- AnimalCard --------------------*/
 
 .animal-pic-container {
-  width: 25%; 
+  /* width: 25%;  */
   padding: 20px; 
-  background-color: var(--accentColor);
-  border: 2px solid var(--borderColor);
-  border-radius: 5px; 
-  box-shadow: 5px 5px;
   position: relative; 
 }
 
 .animal-pic-container::after {
-  content: "";
+  /* content: ""; */
   display: block;
   height: 60px; 
   background-color: var(--accentColor);
@@ -266,6 +268,12 @@ a.button:active {
   left: 0;
   right: 0;
 }
+
+figcaption{
+  text-align: center;
+  padding: 1em;
+}
+
 
 /*-------------------- Footer --------------------*/
 
@@ -282,9 +290,6 @@ footer {
 .form-container {
   width: 50%;
   margin: 2em auto;
-  background-color: var(--accentColor);
-  border: 2px solid var(--borderColor);
-  border-radius: 10px;
   padding: 5em;
 }
 
@@ -300,9 +305,6 @@ footer {
 
 input, 
 textarea {
-  border-radius: 10px;
-  box-shadow:5px 5px;
-  border: 2px solid var(--borderColor);
   line-height: 2em;
 }
 
@@ -344,4 +346,53 @@ button[type="submit"]{
   align-items: center;
 }
 
+/*-------------------- Pets Page --------------------*/
 
+.animal-card-container {
+  display: grid;
+  gap: 2em;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  width: 90%;
+  margin: 2em auto;
+}
+
+h1.pets-page-heading{
+  text-align: center;
+  margin: 2em 0;
+}
+
+/*-------------------- Pet Details Page --------------------*/
+
+.pet-detail-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50vw;
+  margin: 2em auto;
+  padding: 2em;
+  gap: 1em;
+}
+
+.button.contact:hover,
+.button.contact:active{
+  box-shadow: none;
+}
+
+/*-------------------- Message Page --------------------*/
+
+/*-------------------- User Profile Page --------------------*/
+
+.user-profile-container {
+  margin: 2em auto;
+}
+
+/*-------------------- Write Message --------------------*/
+
+.write-message-container {
+  margin: 2em auto;
+}
+
+.message-form{
+  display: flex;
+  flex-direction: column;
+}

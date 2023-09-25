@@ -9,8 +9,14 @@ import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';
 import About from './pages/About';
 import CreateAdd from './pages/CreateAdd';
-import Messages from './pages/Messages';
 import Pets from './pages/Pets';
+import PetDetails from './pages/PetDetails';
+import Messages from './pages/Messages';
+import Message from './components/Message';
+import LoggedInHomepage from './pages/LoggedInHomepage';
+import UserProfile from './pages/UserProfile';
+import WriteMessage from './components/WriteMessage';
+import NotFound from './pages/NotFound';
 
 function App() {
 
@@ -24,15 +30,16 @@ function App() {
         <Route path='/createadd' element={<CreateAdd/>} />
         <Route path='/messages' element={<Messages/>} />
         <Route path='/pets' element={<Pets/>} />
+        <Route path='/pets/:name' element={<PetDetails />} />
+        <Route path='/messages' element={<Messages />} />
+        <Route path='/message' element={<Message />} />
+        <Route path='/home' element={<LoggedInHomepage />} />
+        <Route path='/profile' element={<UserProfile />} />
+        <Route path='/newmessage' element={<WriteMessage />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </>
   );
 }
 
 export default App;
-
-          // <Route path='/api/pokemon' element={<App pokemons={pokemons} />} />
-          // <Route path='/api/pokemon/:id/' element={<Pokemon />} />
-          // <Route path='/api/pokemon/:id/:info/' element={<PokemonInfo />} />
-          // <Route path='/api/pokemon/:id/fight/' element={<PokeFight allPokemons={pokemons} singlePokemon={pokemonSelection} />} />
-          // <Route path='/pokewinner/:winner/:pokedexId' element={<PokeCard allPokemons={pokemons}/>} />
