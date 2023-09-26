@@ -23,7 +23,11 @@ function CreateAdd () {
     const handleInputChange = (event) => {
         const { name, value } = event.target;
 
-        setFormData({ ...formData, [name]: value });
+        if (type === "file") {
+            setFormData({ ...formData, [name]: event.target.files[0] });
+          } else {
+            setFormData({ ...formData, [name]: value });
+          }
       }
 
     const handleOptionChange = (event) => {
@@ -37,6 +41,13 @@ function CreateAdd () {
 
         
         try {
+
+             // Create a FormData object to handle file upload
+            const formDataObj = new FormData();
+            for (const key in formData) {
+                formDataObj.append(key, formData[key]);
+            }
+            
             const jsonData = JSON.stringify(formData);
             const response = await axios.post(
                 'http://localhost:3000/Pets/create',
