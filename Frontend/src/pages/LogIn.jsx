@@ -1,11 +1,9 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+axios.defaults.withCredentials = true;
 import { useState, useEffect } from "react";
 
-import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { useState, useEffect } from "react";
 
 
 function LogIn () {
@@ -16,7 +14,6 @@ function LogIn () {
     const initialLoginData = {
         email: location.state?.email || "",
         password: location.state?.password || ""
-        password: location.state?.password
     };
 
     const [loginData, setLoginData] = useState(initialLoginData);
@@ -46,14 +43,15 @@ function LogIn () {
       
             if (response.status === 200) {
                 console.log('User succesfully logged in');
-                navigate("/home", 
-                navigate("/", 
-                {
+                // navigate("/home", 
+                // navigate("/", 
+                // {
                     // state: {
                     //     email: formData.email,
                     //     password: formData.password
                     // }
-                });
+                // }));
+                navigate('/')
 
             } else {
                 console.error('Server error:', response.data);
@@ -68,7 +66,6 @@ function LogIn () {
         <main>
             <h1 className="margin">Log in to your account:</h1>
                 <form action="" className="sign-up-form" onSubmit={handleSubmit}>
-                <form action="" className="sign-up-form" onSubmit={handleSubmit}>
                     <div className="input-container">
                         <label htmlFor="email">Email:</label><br></br>
                         <input className="box" type="text" id="email" name="email" value={loginData.email} onChange={handleInputChange}/>
@@ -76,13 +73,6 @@ function LogIn () {
                     <div className="input-container">
                         <label htmlFor="password">Password:</label><br></br>
                         <input className="box" type="password" id="password" name="password" value={loginData.password} onChange={handleInputChange}/>
-                    <div className="input-container">
-                        <label htmlFor="email">Email:</label><br></br>
-                        <input type="text" id="email" value={loginData.email} onChange={handleInputChange}/>
-                    </div>
-                    <div className="input-container">
-                        <label htmlFor="password">Password:</label><br></br>
-                        <input type="text" id="password" value={loginData.password} onChange={handleInputChange}/>
                     </div>
                     <button className="sign-up-form-button" type="submit">Submit</button>
                 </form>

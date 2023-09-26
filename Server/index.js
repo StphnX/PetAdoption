@@ -25,7 +25,12 @@ const app = express();
 
 //middleware
 app.use(express.json());
-app.use(cors());
+const corsConfig = {
+  origin: true,
+  credentials: true,
+};
+app.use(cors(corsConfig));
+app.options('*', cors(corsConfig));
 app.use(cookieParser());
 app.use(bodyParser.json());
 // DEBUGGING MIDDLEWARE ONLY MEANT TO BE USED DURING DEVELOPMENT

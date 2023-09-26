@@ -17,7 +17,7 @@ import LoggedInHomepage from './pages/LoggedInHomepage';
 import UserProfile from './pages/UserProfile';
 import WriteMessage from './components/WriteMessage';
 import NotFound from './pages/NotFound';
-import Pets from './pages/Pets';
+
 
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
         <Route path='/createadd' element={<CreateAdd/>} />
         <Route path='/messages' element={<Messages/>} />
         <Route path='/pets' element={<Pets/>} />
-        <Route path='/pets/:name' element={<PetDetails />} />
+        <Route path='/pets/:id' element={<PetDetails />} />
         <Route path='/messages' element={<Messages />} />
         <Route path='/message' element={<Message />} />
         <Route path='/home' element={<LoggedInHomepage />} />

@@ -5,8 +5,14 @@ import { NavLink } from "react-router-dom";
 import Home from "../pages/home";
 import About from "../pages/About";
 import LogIn from "../pages/LogIn";
+import { Cookies, useCookies } from 'react-cookie';
+
+
 
 function Menu() {
+    const [cookies, setCookie] = useCookies(["jwt"]);
+
+    console.log(cookies.jwt)
 
     return (
         <>

@@ -32,14 +32,10 @@ function Pets() {
             <h1 className="pets-page-heading">Pets currently looking for a new home:</h1>
             <div className="animal-card-container">
                 {pets.map((pet, index) => (
-                    <NavLink key={index} to={`/pets/${pet.name}`}>
+                    <NavLink key={index} to={`/pets/${pet._id}`}>
                         <AnimalCard pet={pet}/>
                     </NavLink>
                 ))}
-
-            <h1>Pets that are currently looking for a new home:</h1>
-            <div className="animal-card-container">
-                {pets.map((pet) => <AnimalCard pet={pet}/>)}
             </div>
         </>
     );
