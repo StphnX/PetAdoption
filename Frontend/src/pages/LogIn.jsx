@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 axios.defaults.withCredentials = true;
 import { useState, useEffect } from "react";
+import { useCookies } from "react-cookie";
 
 
 
@@ -10,6 +11,8 @@ function LogIn () {
 
     const location = useLocation();
     const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState("");
+    const [, setCookie] = useCookies(["jwt"]);
     
     const initialLoginData = {
         email: location.state?.email || "",
@@ -17,7 +20,6 @@ function LogIn () {
     };
 
     const [loginData, setLoginData] = useState(initialLoginData);
-
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -43,21 +45,21 @@ function LogIn () {
       
             if (response.status === 200) {
                 console.log('User succesfully logged in');
-                // navigate("/home", 
-                // navigate("/", 
-                // {
-                    // state: {
-                    //     email: formData.email,
-                    //     password: formData.password
-                    // }
-                // }));
+                // setCookie("jwt", token, { path: "/" });
                 navigate('/')
 
             } else {
                 console.error('Server error:', response.data);
             }
           } catch (error) {
-            console.error('Network error:', error.message);
+
+            if (error.response.data.errors.email) {
+                setErrorMessage(error.response.data.errors.email);
+            } else if (error.response.data.errors.password) {
+                setErrorMessage(error.response.data.errors.password);
+            } else {
+                setErrorMessage("An error occurred.");
+            }
           }
     }
 
@@ -74,6 +76,7 @@ function LogIn () {
                         <label htmlFor="password">Password:</label><br></br>
                         <input className="box" type="password" id="password" name="password" value={loginData.password} onChange={handleInputChange}/>
                     </div>
+                    {errorMessage && <div className="error-message">{errorMessage}</div>}
                     <button className="sign-up-form-button" type="submit">Submit</button>
                 </form>
         </main>

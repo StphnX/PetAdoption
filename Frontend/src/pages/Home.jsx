@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import AnimalCard from "../components/AnimalCard";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 function Home () {
 
@@ -53,7 +54,9 @@ function Home () {
             <h2>Meet Your Future Companion</h2>
                 <div className="pics-container">
                 {getRandomPets().map((animal, index)  => (
-                   <AnimalCard key={index} pet={animal} />
+                <NavLink key={index} to={`/pets/${animal._id}`}>
+                    <AnimalCard key={index} pet={animal}/>
+                </NavLink>
                ))}
                 </div>
             </div>

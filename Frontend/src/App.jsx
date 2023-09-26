@@ -13,7 +13,6 @@ import Pets from './pages/Pets';
 import PetDetails from './pages/PetDetails';
 import Messages from './pages/Messages';
 import Message from './components/Message';
-import LoggedInHomepage from './pages/LoggedInHomepage';
 import UserProfile from './pages/UserProfile';
 import WriteMessage from './components/WriteMessage';
 import NotFound from './pages/NotFound';
@@ -35,7 +34,6 @@ function App() {
         <Route path='/pets/:id' element={<PetDetails />} />
         <Route path='/messages' element={<Messages />} />
         <Route path='/message' element={<Message />} />
-        <Route path='/home' element={<LoggedInHomepage />} />
         <Route path='/profile' element={<UserProfile />} />
         <Route path='/newmessage' element={<WriteMessage />} />
         <Route path='*' element={<NotFound />} />

@@ -83,9 +83,9 @@ function SignUp () {
                     <label htmlFor="username">Username:</label><br></br>
                     <input className="box" type="text" id="username" name="Username" value={formData.Username} minLength="1" onChange={handleInputChange} />
                 </div>
+                {errorMessage && <div className="error-message">{errorMessage}</div>}
                 <button className="sign-up-form-button" type="submit">Submit</button>
             </form>
-            {errorMessage && <div className="error-message">{errorMessage}</div>}
         </>
     );
 }

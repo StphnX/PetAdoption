@@ -29,17 +29,16 @@ function PetDetails() {
             {
                 !pet ? <p>Loading..</p> :
                     <div className="pet-detail-container box">
-                        <h1>Pets name</h1>
+                        <h1>{pet.name}</h1>
                         <ul className="pet-detail-list">
-                            {/* TO DO this details need to be populated */}
-                            <li>pet image</li>
-                            <li>Type:</li>
-                            <li>Breed:</li>
-                            <li>Age:</li>
-                            <li>Gender:</li>
-                            <li>Health status:</li>
-                            <li>Located in:</li>
-                            <li><p>Description:</p></li>
+                            <li><img src={pet.picture} alt={pet.name} /></li>
+                            <li>Type: {pet.animal_type}</li>
+                            <li>Breed: {pet.breed}</li>
+                            <li>Age: {pet.age}</li>
+                            <li>Gender: {pet.gender}</li>
+                            <li>Health status: {pet.health_status}</li>
+                            <li>Located in: {pet.zipcode}</li>
+                            <li><p>Description: {pet.description}</p></li>
                         </ul>
                         <NavLink className="button contact-button" to="/newmessage">Contact</NavLink>
                     </div>
