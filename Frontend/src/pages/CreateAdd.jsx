@@ -6,7 +6,11 @@ import { useState } from "react";
 
 function CreateAdd () {
 
-    // const [formData, setFormData] = useState({
+    // const [selectedOption, setSelectedOption] = useState("");
+
+    const [fileData, setFileData] = useState(null);
+
+    // const [petData, setPetData] = useState({
     //     name: '',
     //     age: 0,
     //     gender: '',
@@ -19,11 +23,10 @@ function CreateAdd () {
     //     description: ''
     //   });
 
-    //   const [selectedOption, setSelectedOption] = useState("");
 
-      const [fileData, setFileData] = useState(null);
-
-      const instance = axios.create()
+      const instance = axios.create({
+        withCredentials: true
+      });
 
 
     // const uploadImge = () => {
@@ -84,8 +87,13 @@ function CreateAdd () {
                     "https://api.cloudinary.com/v1_1/duanxtte9/image/upload",
                      formData
                      );
-    
-                console.log(response);
+
+                if (response.data && response.data.secure_url) {
+                    const imageURL = response.data.secure_url;
+                    console.log("Image uploaded successfully. URL:", imageURL);
+                } else {
+                    console.error("Image upload failed. Response:", response);
+                }
 
             } catch (error) {
             console.error("Error uploading image:", error.message);
