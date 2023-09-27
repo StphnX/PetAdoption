@@ -2,69 +2,128 @@ import React from "react";
 import axios from "axios";
 import { useState } from "react";
 
+// import {Cloudinary} from "@cloudinary/url-gen";
+
 function CreateAdd () {
 
-    const [formData, setFormData] = useState({
-        name: '',
-        age: 0,
-        gender: '',
-        animal_type: '',
-        breed: '',
-        health_status: '',
-        address: '',
-        zipcode: '',
-        picture: '',
-        description: ''
-      });
+    // const [formData, setFormData] = useState({
+    //     name: '',
+    //     age: 0,
+    //     gender: '',
+    //     animal_type: '',
+    //     breed: '',
+    //     health_status: '',
+    //     address: '',
+    //     zipcode: '',
+    //     picture: '',
+    //     description: ''
+    //   });
 
-      const [selectedOption, setSelectedOption] = useState("");
+    //   const [selectedOption, setSelectedOption] = useState("");
+
+      const [fileData, setFileData] = useState(null);
+
+      const instance = axios.create()
 
 
-    const handleInputChange = (event) => {
-        const { name, value } = event.target;
+    // const uploadImge = () => {
+    //     const imageFile = {
+    //         file: fileData,
+    //         uploadPreset: "cpguecae"
+    //     }
 
-        setFormData({ ...formData, [name]: value });
-      }
+    //     axios.post(
+    //         "https://api.cloudinary.com/v1_1/duanxtte9/image/upload",
+    //          imageFile
+    //          ).then((response) => {
+    //             console.log(response);
+    //          });
 
-    const handleOptionChange = (event) => {
-        const { value } = event.target.value;
-        setFormData({ ...formData, gender: value });
-      };
+    // }
+
+    // const handleImageUpload = (event) => {
+
+    //     if(file) {
+    //         const cld = new Cloudinary({cloud: {cloudName: 'duanxtte9'}});
+            
+    //     }
+
+    // }
+
+
+    // const handleInputChange = (event) => {
+    //     const { name, value } = event.target;
+
+
+    //     setFormData({ ...formData, [name]: value });
+    //   }
+
+    // const handleOptionChange = (event) => {
+    //     const { value } = event.target.value;
+    //     setFormData({ ...formData, gender: value });
+    //   };
       
-    const handleSubmit = async (event) => {
+    // const handleSubmit = async (event) => {
 
-        event.preventDefault();
+    //     event.preventDefault();
 
-        
-        try {
-            const jsonData = JSON.stringify(formData);
-            const response = await axios.post(
-                'http://localhost:3000/Pets/create',
-                jsonData,
-                {
-                    headers:{
-                        "Content-Type": "application/json"
-                    }
-                }
-            );
+        const uploadImage = async () => {
+
+            if (!fileData) {
+                console.error("No file selected");
+                return;
+              }
+
+            const formData = new FormData();
+            formData.append("file", fileData);
+            formData.append("upload_preset", "petImage");
+
+            try{
+
+                const response = await instance.post(
+                    "https://api.cloudinary.com/v1_1/duanxtte9/image/upload",
+                     formData
+                     );
     
-        if (response.status === 201) {
-            console.log('Data successfully submitted');
-            navigate("/");
+                console.log(response);
 
-        } 
-      } catch (error) {
-        console.error('Network error:', error.message);
-        alert('Failed to create pet entry');
-
+            } catch (error) {
+            console.error("Error uploading image:", error.message);
+            }
+           
+        
+    //     try {
         }
-    }
+        
+    //         }
+    //         const jsonData = JSON.stringify(formData);
+    //         const response = await axios.post(
+    //             'http://localhost:3000/Pets/create',
+    //             jsonData,
+    //             {
+    //                 headers:{
+    //                     "Content-Type": "application/json"
+    //                 }
+    //             }
+    //         );
+    
+    //     if (response.status === 201) {
+    //         console.log('Data successfully submitted');
+    //         navigate("/");
+
+    //     } 
+    //   } catch (error) {
+    //     console.error('Network error:', error.message);
+    //     alert('Failed to create pet entry');
+
+    //     }
+    // }
 
     return (
-        <>
-        <h1 className="margin">Create an add for your pet:</h1>
-        <form onSubmit={handleSubmit} className="create-add-form">
-            <label htmlFor="petName">Name of your pet:</label>
+        <div>
+        {/* <h1 className="margin">Create an add for your pet:</h1> */}
+        {/* <form onSubmit={handleSubmit} className="create-add-form"> */}
+            {/* <label htmlFor="petName">Name of your pet:</label>
             <input className="box" type="text" id="petName" name="name" onChange={handleInputChange} />
             <label htmlFor="petName">Age of your pet:</label>
             <input className="box" type="text" id="petAge" name="age" onChange={handleInputChange} />
@@ -84,12 +143,15 @@ function CreateAdd () {
                 <option value="male">Male</option>
             </select>
             <label htmlFor="desctiption">Description:</label>
-            <textarea className="box" name="description" id="description" cols="30" rows="10" onChange={handleInputChange}></textarea>
-            <input type="file" accept="image/*" onChange={handleInputChange} />
-            <button type="submit">Submit</button>
-        </form>
-        </>
+            <textarea className="box" name="description" id="description" cols="30" rows="10" onChange={handleInputChange}></textarea> */}
+            <input type="file" accept="image/*" onChange={(event) => {
+                setFileData(event.target.files[0]);
+            }} />
+            <button onClick={uploadImage}>Submit</button>
+        {/* </form> */}
+        </div>
     );
 }
+
 
 export default CreateAdd;
