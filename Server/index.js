@@ -14,6 +14,8 @@ import { Server } from 'socket.io';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import { createServer } from 'http';
+// import messagesRouter from './Routes/messagesRouter.js';
+
 
 const username = process.env.MONGODB_USERNAME;
 const password = process.env.MONGODB_PASSWORD;
@@ -30,20 +32,11 @@ dotenv.config();
 
 const app = express(); // Initialize the Express app here
 
-// Define the '/message' route after app initialization
-app.get('/message', (req, res) => {
-  res.sendFile(indexPath);
-});
+// // Define the '/message' route after app initialization
+// app.get('/message', (req, res) => {
+//   res.sendFile(indexPath);
+// });
 
-const server = createServer(app); // Create the HTTP server
-
-const io = new Server(server); // Initialize Socket.io after creating the server
-
-io.on('connection', (socket) => {
-  socket.on('chat message', (msg) => {
-    console.log('message: ' + msg);
-  });
-});
 
 //middleware
 app.use(express.json());
@@ -57,6 +50,41 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 
 app.use("/", petRouter);
+// app.use('/messages', messagesRouter)
+
+const server = createServer(app); 
+
+const io = new Server(server, {
+  cors: {
+    origin: '*',
+    methods: ['GET', 'POST'],
+    credentials: true
+  }
+}); 
+
+io.on('connection', (socket) => {
+  // console.log(`Socket ${socket.id} connected`);
+
+  socket.on('join_room', (data) => {
+    const { room, username } = data;
+    socket.join(room);
+    socket.username = username;
+  });
+
+  socket.on('sendMessage', (data) => {
+    const { to, message, from } = data;
+    console.log(data);
+
+    socket.to(to).emit('message', { from, message, to });
+  });
+
+  socket.on('disconnect', () => {
+    console.log(`Socket ${socket.id} disconnected`);
+  });
+});
+
+
+
 app.use(authRoutes);
 app.get('*', checkUser);
 
@@ -75,39 +103,3 @@ db.once("error", (error) => {
   console.log(`Unable to establish database connection: ${error}\nExiting.`);
   process.exit(1);
 });
-
-
-// function to push JSON data into the specific mongo db collection
-
-
-// const databaseName = "PetAdoption";
-// const collectionName = "pets";
-
-// // JSON file path
-// const jsonFilePath = "PetList.json";
-
-// // Read the JSON file
-// const jsonData = JSON.parse(fs.readFileSync(jsonFilePath, "utf-8"));
-
-// // Function to insert data into MongoDB
-// async function insertData() {
-//   const client = new MongoClient(uri, { useUnifiedTopology: true });
-
-//   try {
-//     await client.connect();
-//     console.log("Connected to MongoDB successfully");
-
-//     const database = client.db(databaseName);
-//     const collection = database.collection(collectionName);
-
-//     // Insert the data into the MongoDB collection
-//     const result = await collection.insertMany(jsonData);
-//     console.log(`Inserted ${result.insertedCount} documents into '${collectionName}'`);
-//   } catch (err) {
-//     console.error(`An error occurred: ${err}`);
-//   } finally {
-//     client.close();
-//   }
-// }
-
-// insertData();
