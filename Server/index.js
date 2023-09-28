@@ -10,7 +10,7 @@ import errorHandler from "./middleware/errorHandling.js";
 import petRouter from "./Routes/petRouter.js";
 import authRoutes from "./Routes/authRoutes.js";
 import { requireAuth, checkUser } from "./middleware/authMiddleware.js"
-
+import { Server } from 'socket.io';
 
 const username = process.env.MONGODB_USERNAME;
 const password = process.env.MONGODB_PASSWORD;
@@ -18,6 +18,24 @@ const password = process.env.MONGODB_PASSWORD;
 // MongoDB connection details
 const uri = `mongodb+srv://${username}:${password}@cluster0.wfbqjpb.mongodb.net/PetAdoption`;
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const server = createServer(app);
+
+const indexPath = path.join(__dirname, 'index.html');
+
+app.get('/', (req, res) => {
+  res.sendFile(indexPath);
+});
+
+const io = new Server(server);
+
+io.on('connection', (socket) => {
+  socket.on('chat message', (msg) => {
+    console.log('message: ' + msg);
+  });
+});
 
 dotenv.config();
 
