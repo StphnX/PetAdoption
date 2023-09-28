@@ -14,7 +14,7 @@ import { Server } from 'socket.io';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import { createServer } from 'http';
-// import messagesRouter from './Routes/messagesRouter.js';
+import { initializeSocketServer } from './Controllers/messagesControllers.js';
 
 
 const username = process.env.MONGODB_USERNAME;
@@ -30,13 +30,7 @@ const indexPath = path.join(__dirname, 'index.html');
 
 dotenv.config();
 
-const app = express(); // Initialize the Express app here
-
-// // Define the '/message' route after app initialization
-// app.get('/message', (req, res) => {
-//   res.sendFile(indexPath);
-// });
-
+const app = express();
 
 //middleware
 app.use(express.json());
@@ -48,41 +42,10 @@ app.use(cors(corsConfig));
 app.options('*', cors(corsConfig));
 app.use(cookieParser());
 app.use(bodyParser.json());
-
 app.use("/", petRouter);
-// app.use('/messages', messagesRouter)
 
 const server = createServer(app); 
-
-const io = new Server(server, {
-  cors: {
-    origin: '*',
-    methods: ['GET', 'POST'],
-    credentials: true
-  }
-}); 
-
-io.on('connection', (socket) => {
-  // console.log(`Socket ${socket.id} connected`);
-
-  socket.on('join_room', (data) => {
-    const { room, username } = data;
-    socket.join(room);
-    socket.username = username;
-  });
-
-  socket.on('sendMessage', (data) => {
-    const { to, message, from } = data;
-    console.log(data);
-
-    socket.to(to).emit('message', { from, message, to });
-  });
-
-  socket.on('disconnect', () => {
-    console.log(`Socket ${socket.id} disconnected`);
-  });
-});
-
+initializeSocketServer(server);
 
 
 app.use(authRoutes);

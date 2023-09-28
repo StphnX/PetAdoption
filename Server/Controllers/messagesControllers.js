@@ -1,35 +1,32 @@
-// import { Server } from 'socket.io';
-// import { createServer } from 'http';
-// import app from './index.js';
-// import {server} from '../index.js';
+import { Server } from 'socket.io';
 
-// // const server = createServer(app); 
+let io;
 
-// const io = new Server(server, {
-//   cors: {
-//     origin: '*',
-//     methods: ['GET', 'POST'],
-//     credentials: true
-//   }
-// }); 
+function initializeSocketServer(server){
+  io = new Server(server, {
+    cors: {
+      origin: '*',
+      methods: ['GET', 'POST'],
+      credentials: true
+    }
+  });
 
-// io.on('connection', (socket) => {
-//   console.log(`Socket ${socket.id} connected`);
+  io.on('connection', (socket) => {
+    socket.on('join_room', (data) => {
+      const { room, username } = data;
+      socket.join(room);
+      socket.username = username;
+    });
 
-//   let username;
+    socket.on('sendMessage', (data) => {
+      const { to, message, from } = data;
+      socket.to(to).emit('message', { from, message, to });
+    });
 
-//   socket.on('setUsername', (user) => {
-//     username = user;
-//   });
+    socket.on('disconnect', () => {
+      console.log(`Socket ${socket.id} disconnected`);
+    });
+  });
+}
 
-//   socket.on('sendMessage', (message) => {
-//     // io.emit('message', message);
-//     socket.to(message.to).emit('message', message);
-//   });
-
-//   socket.on('disconnect', () => {
-//     console.log(`Socket ${socket.id} disconnected`);
-//   });
-// });
-
-// export default io;
+export { initializeSocketServer };
