@@ -1,4 +1,10 @@
 import { Server } from 'socket.io';
+// TO TO Create a socket server to store all the information as it is coming in
+// TO DO message model
+// TO DO chatroom model
+// TO DO create room route
+// TO DO send message route
+// TO DO get messages route
 
 let io;
 
