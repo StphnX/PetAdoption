@@ -1,6 +1,10 @@
 import asyncHandler from "express-async-handler";
 import PetModel from "../schemas/petSchema.js";
 import mongoose from "mongoose";
+import cloudinary from "../utils/cloudinary.js";
+import multer from 'multer';
+
+const upload = multer({ dest: 'uploads/' });
 
 //GET all pokemon
 const getAllPets = asyncHandler(async (req, res, next) => {
@@ -65,17 +69,54 @@ const getAllPetsByProp = asyncHandler(async (req, res, next) => {
 
 
 const postNewPet = asyncHandler(async (req, res) => {
+    console.log(req.body)
     try {
-        const newData = req.body;
-
+        // Check if req.file contains the uploaded image (provided by multer middleware)
+        if (!req.file) {
+          return res.status(400).json({ message: 'No image file uploaded' });
+        }
+    
+        // Upload the image to Cloudinary
+        const result = await cloudinary.uploader.upload(req.file.path, {
+          folder: 'pets',
+        });
+    
+        // Now, you can use the result from Cloudinary, which contains the image URL
+        const imageUrl = result.secure_url;
+    
+        // Create a new pet object with the image URL and other data from req.body
+        const newData = {
+          ...req.body, 
+          image: imageUrl, // Assuming your PetModel expects an 'image' field
+        };
+    
         const newPet = new PetModel(newData);
-
-        await newPet.save()
+    
+        await newPet.save();
         res.status(201).json({ message: 'New pet entry created successfully!', data: newPet });
-    } catch (error) {
-        console.log(error);
+      } catch (error) {
+        console.error(error);
         res.status(500).json({ message: 'Error creating pet entry' });
-    }
+      }
+    // try {
+    //     const result = await cloudinary.uploader.upload(image, {
+    //         folder: "pets"
+    //     })
+    //     console.log(result)
+    //     // image: {
+    //     //     publi_id: result.publi_id,
+    //     //     url: result.secure_url
+    //     // }
+    //     const newData = req.body;
+
+    //     const newPet = new PetModel(newData);
+
+    //     await newPet.save()
+    //     res.status(201).json({ message: 'New pet entry created successfully!', data: newPet });
+    // } catch (error) {
+    //     console.log(error);
+    //     res.status(500).json({ message: 'Error creating pet entry' });
+    // }
 
 });
 
