@@ -9,8 +9,11 @@ import db from "./db/mongodb.js";
 import errorHandler from "./middleware/errorHandling.js";
 import petRouter from "./Routes/petRouter.js";
 import authRoutes from "./Routes/authRoutes.js";
-import { requireAuth, checkUser } from "./middleware/authMiddleware.js"
-
+import { requireAuth, checkUser } from "./middleware/authMiddleware.js";
+import { Server } from 'socket.io';
+import { fileURLToPath } from 'url';
+import path from 'path';
+import { createServer } from 'http';
 
 const username = process.env.MONGODB_USERNAME;
 const password = process.env.MONGODB_PASSWORD;
@@ -18,10 +21,29 @@ const password = process.env.MONGODB_PASSWORD;
 // MongoDB connection details
 const uri = `mongodb+srv://${username}:${password}@cluster0.wfbqjpb.mongodb.net/PetAdoption`;
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const indexPath = path.join(__dirname, 'index.html');
 
 dotenv.config();
 
-const app = express();
+const app = express(); // Initialize the Express app here
+
+// Define the '/message' route after app initialization
+app.get('/message', (req, res) => {
+  res.sendFile(indexPath);
+});
+
+const server = createServer(app); // Create the HTTP server
+
+const io = new Server(server); // Initialize Socket.io after creating the server
+
+io.on('connection', (socket) => {
+  socket.on('chat message', (msg) => {
+    console.log('message: ' + msg);
+  });
+});
 
 //middleware
 app.use(express.json());
@@ -33,27 +55,18 @@ app.use(cors(corsConfig));
 app.options('*', cors(corsConfig));
 app.use(cookieParser());
 app.use(bodyParser.json());
-// DEBUGGING MIDDLEWARE ONLY MEANT TO BE USED DURING DEVELOPMENT
-// app.use((req,res, next) => {
-//   console.log('METHOD: '+req.method);
-//   console.log('PATH: '+req.path);
-//   console.log(req.body)
-//   next()
-// })
 
 app.use("/", petRouter);
 app.use(authRoutes);
 app.get('*', checkUser);
 
-
 // error handling middleware
 app.use(errorHandler);
-
 
 const port = process.env.PORT || 3000;
 
 db.once("open", () => {
-  app.listen(port, () => {
+  server.listen(port, () => {
     console.log(`Server running, listening to port ${port}`);
   });
 });
@@ -62,6 +75,7 @@ db.once("error", (error) => {
   console.log(`Unable to establish database connection: ${error}\nExiting.`);
   process.exit(1);
 });
+
 
 // function to push JSON data into the specific mongo db collection
 
