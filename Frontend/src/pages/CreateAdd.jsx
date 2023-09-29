@@ -2,10 +2,13 @@ import React from "react";
 import axios from "axios";
 axios.defaults.withCredentials = true;
 import { useState } from "react";
+import { useAuth } from '../context/AuthContext';
 
 // import {Cloudinary} from "@cloudinary/url-gen";
 
 function CreateAdd () {
+    const { user } = useAuth();
+    console.log(user.user);
     const [fileData, setFileData] = useState(null);
     const [images, setImages] = useState("");
     const [petData, setPetData] = useState({
@@ -18,7 +21,8 @@ function CreateAdd () {
         address: '',
         zipcode: '',
         picture: 'here',
-        description: ''
+        description: '',
+        owner_id: user.user
       });
 
     const handleChange = (event) => {
@@ -261,6 +265,13 @@ function CreateAdd () {
                         value={petData.description}
                         onChange={handleChange}
                         required
+                    />
+                </div>
+                <div>
+                    <input
+                        type="hidden"
+                        name="userId"
+                        value={user.user}
                     />
                 </div>
                 <input 
