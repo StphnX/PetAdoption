@@ -22,7 +22,7 @@ function CreateAdd () {
         zipcode: '',
         picture: 'here',
         description: '',
-        owner_id: user.user
+        owner: user.user
       });
 
     const handleChange = (event) => {
