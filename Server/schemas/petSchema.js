@@ -14,9 +14,10 @@ const petSchema = new Schema({
     description: { type: String, required: true },
     // picture: { type: String, required: true },
     image: {
-        public_id: {type: String},
-        url: {type: String}
-    }
+        public_id: { type: String },
+        url: { type: String }
+    },
+    owner: { type: String, required: true }
 
 
 

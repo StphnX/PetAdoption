@@ -76,15 +76,15 @@ const login_post = async (req, res) => {
     try {
         const user = await User.login(email, password);
         const token = createToken(user._id);
-        res.cookie('jwt', token, { 
+        res.cookie('jwt', token, {
             // httpOnly: true,
             // maxAge: maxAge * 1000,
-                httpOnly: true,
-                maxAge: maxAge * 1000,
-                domain: 'localhost',
-                sameSite: 'Lax',
-                secure: false,
-                path: '/',
+            httpOnly: true,
+            maxAge: maxAge * 1000,
+            domain: 'localhost',
+            sameSite: 'Lax',
+            secure: false,
+            path: '/',
         });
         res.status(200).json({ user: user._id });
     }

@@ -73,31 +73,31 @@ const postNewPet = asyncHandler(async (req, res) => {
     try {
         // Check if req.file contains the uploaded image (provided by multer middleware)
         if (!req.file) {
-          return res.status(400).json({ message: 'No image file uploaded' });
+            return res.status(400).json({ message: 'No image file uploaded' });
         }
-    
+
         // Upload the image to Cloudinary
         const result = await cloudinary.uploader.upload(req.file.path, {
-          folder: 'pets',
+            folder: 'pets',
         });
-    
+
         // Now, you can use the result from Cloudinary, which contains the image URL
         const imageUrl = result.secure_url;
-    
+
         // Create a new pet object with the image URL and other data from req.body
         const newData = {
-          ...req.body, 
-          image: imageUrl, // Assuming your PetModel expects an 'image' field
+            ...req.body,
+            image: imageUrl, // Assuming your PetModel expects an 'image' field
         };
-    
+
         const newPet = new PetModel(newData);
-    
+
         await newPet.save();
         res.status(201).json({ message: 'New pet entry created successfully!', data: newPet });
-      } catch (error) {
+    } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Error creating pet entry' });
-      }
+    }
     // try {
     //     const result = await cloudinary.uploader.upload(image, {
     //         folder: "pets"
