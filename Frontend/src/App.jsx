@@ -16,6 +16,7 @@ import Message from './components/Message';
 import UserProfile from './pages/UserProfile';
 import WriteMessage from './components/WriteMessage';
 import NotFound from './pages/NotFound';
+import { AuthProvider } from './context/AuthContext';
 
 
 
@@ -24,6 +25,7 @@ function App() {
 
 
   return (
+    <AuthProvider>
     <>
       <Routes>
         <Route path='/' element={<Home />} />
@@ -41,6 +43,7 @@ function App() {
         <Route path='*' element={<NotFound />} />
       </Routes>
     </>
+    </AuthProvider>
   );
 }
 

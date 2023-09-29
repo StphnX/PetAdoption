@@ -38,11 +38,11 @@ const ChatWindow = () => {
           <div key={index}>{msg.message}</div>
         ))}
       </div>
-      <input
-        type="text"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-      />
+        <input
+          type="text"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        />
       <button onClick={sendMessage}>Send</button>
     </div>
   );

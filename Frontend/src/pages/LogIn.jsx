@@ -4,11 +4,13 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 import { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
+import { useAuth } from '../context/AuthContext';
 
 
 
 function LogIn () {
 
+    const { login } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState("");
@@ -46,6 +48,12 @@ function LogIn () {
             if (response.status === 200) {
                 console.log('User succesfully logged in');
                 // setCookie("jwt", token, { path: "/" });
+
+                 // Call the login function to set the user data in the context:
+                 const userData = response.data;
+                 login(userData);
+                 console.log(userData);
+
                 navigate('/')
 
             } else {
