@@ -10,6 +10,7 @@ import errorHandler from "./middleware/errorHandling.js";
 import petRouter from "./Routes/petRouter.js";
 import authRoutes from "./Routes/authRoutes.js";
 import chatRouter from "./Routes/chatRouter.js";
+import userRouter from "./Routes/userRoutes.js";
 import { requireAuth, checkUser } from "./middleware/authMiddleware.js";
 import { Server } from 'socket.io';
 import { fileURLToPath } from 'url';
@@ -51,6 +52,7 @@ initializeSocketServer(server);
 
 app.use("/io", chatRouter);
 app.use(authRoutes);
+app.use("/user", userRouter)
 app.get('*', checkUser);
 
 // error handling middleware

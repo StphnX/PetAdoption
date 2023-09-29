@@ -7,6 +7,11 @@ function Messages () {
     return (
         <>
             <h1>Messages displayed here: </h1>
+            {/* TO DO Main container for displaying anything chat related */}
+            {/* TO DO on the left hand we need a list off all the current chats that this user has*/}
+            {/* TO DO on the right we need a chat window for a singular interaction between two users*/}
+            {/* TO DO inside of this one a fowm for the user to write inside of*/}
+
             <ChatWindow/>
         </>
     );
