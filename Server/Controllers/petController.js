@@ -174,7 +174,25 @@ const deletePet = asyncHandler(async (req, res) => {
     }
 });
 
+const getPetsByOwner = asyncHandler(async (req, res) => {
+    try {
+        const ownerID = req.params.owner;
+
+        // Assuming you have a PetModel with an 'owner' field referencing the owner's ID
+        const pets = await PetModel.find({ owner: ownerID });
+
+        if (!pets || pets.length === 0) {
+            return res.status(404).json({ message: 'No pets found for this owner' });
+        }
+
+        res.json(pets);
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
 
 
 
-export { getAllPets, getSinglePet, postNewPet, getAllPetsByProp, editPet, deletePet };
+
+export { getAllPets, getSinglePet, postNewPet, getAllPetsByProp, editPet, deletePet, getPetsByOwner };
