@@ -3,6 +3,7 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 import { useState } from "react";
 import { useAuth } from '../context/AuthContext';
+import Menu from "../components/Menu";
 
 // import {Cloudinary} from "@cloudinary/url-gen";
 
@@ -184,6 +185,8 @@ function CreateAdd () {
       };
         
     return (
+        <>
+        <Menu />
         <div>
             <h2>Create New Pet</h2>
             <form onSubmit={handleSubmit}>
@@ -287,6 +290,7 @@ function CreateAdd () {
                 <button type="submit">Submit</button>
             </form>
         </div>
+        </>
     );
 }
 

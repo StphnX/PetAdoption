@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import AnimalCard from "../components/AnimalCard";
 import { NavLink } from "react-router-dom";
+import Menu from "../components/Menu";
 
 
 
@@ -29,6 +30,7 @@ function Pets() {
 
     return (
         <>
+        <Menu />
             <h1 className="pets-page-heading">Pets currently looking for a new home:</h1>
             <div className="animal-card-container">
                 {pets.map((pet, index) => (

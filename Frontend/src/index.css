@@ -107,6 +107,11 @@ main{
   border-radius: 10px;
 }
 
+.underlined-link {
+  text-decoration: underline;
+}
+
+
 /*-------------------- Menu bar --------------------*/
 
 a.log-in.button,

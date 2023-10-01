@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, NavLink } from "react-router-dom";
 import axios from "axios";
 axios.defaults.withCredentials = true;
 import { useState, useEffect } from "react";
@@ -85,8 +85,10 @@ function LogIn () {
                         <input className="box" type="password" id="password" name="password" value={loginData.password} onChange={handleInputChange}/>
                     </div>
                     {errorMessage && <div className="error-message">{errorMessage}</div>}
+                    <p className="link-to-login" >Don't have an account yet? <NavLink className="underlined-link" to="/signup">Sign up instead</NavLink></p>
                     <button className="sign-up-form-button" type="submit">Submit</button>
                 </form>
+                
         </main>
         </>
     );

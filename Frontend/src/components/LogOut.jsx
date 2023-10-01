@@ -1,7 +1,9 @@
 import React from "react";
 import axios from "axios";
+import { useAuth } from '../context/AuthContext';
 
 function LogOut () {
+    const { user, logout } = useAuth();
 
 
     const handleLogOut = async () => {
@@ -10,8 +12,10 @@ function LogOut () {
             const response = await axios.get('http://localhost:3000/logout');
       
             if (response.status === 200) {
+                logout();
                 console.log('User succesfully logged out');
-                navigate('/')
+                console.log(user);
+                // navigate('/')
     
             } else {
                 console.error('Server error:', response.data);

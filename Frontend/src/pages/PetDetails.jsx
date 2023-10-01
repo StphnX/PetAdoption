@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import axios from "axios";
+import Menu from "../components/Menu";
 
 function PetDetails() {
     const { id } = useParams()
@@ -26,6 +27,7 @@ function PetDetails() {
 
     return (
         <>
+        <Menu />
             {
                 !pet ? <p>Loading..</p> :
                     <div className="pet-detail-container box">

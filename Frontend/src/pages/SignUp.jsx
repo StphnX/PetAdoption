@@ -1,7 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import axios from 'axios';
+import Menu from "../components/Menu";
 
 function SignUp () {
 
@@ -86,6 +87,7 @@ function SignUp () {
 
     return (
         <>
+        <Menu />
         <h1 className="margin">Create an account:</h1>
             <form action="" className="sign-up-form" onSubmit={handleSubmit}>
                 <div className="input-container">
@@ -101,6 +103,7 @@ function SignUp () {
                     <input className="box" type="text" id="username" name="Username" value={formData.Username} minLength="1" onChange={handleInputChange} />
                 </div>
                 {errorMessage && <div className="error-message">{errorMessage}</div>}
+                <p className="link-to-login" >Already have an account? <NavLink className="underlined-link" to="/login">Log in instead</NavLink></p>
                 <button className="sign-up-form-button" type="submit">Submit</button>
             </form>
         </>
