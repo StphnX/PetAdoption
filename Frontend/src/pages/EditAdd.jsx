@@ -15,6 +15,7 @@ function EditAdd () {
     const [fileData, setFileData] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
     const [images, setImages] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
     const [petData, setPetData] = useState({
         name: '',
         age: 0,
@@ -77,10 +78,9 @@ function EditAdd () {
         try {
             // First, upload the image
             if (!fileData) {
-              console.error("No file selected");
+              setErrorMessage("Please upload a picture");
               return;
             }
-      
             const imageFormData = new FormData();
             imageFormData.append("image", fileData);
       
@@ -142,6 +142,8 @@ function EditAdd () {
               console.log(error.config);
           }
     }
+
+
   
     return (
         <>
@@ -265,13 +267,20 @@ function EditAdd () {
                             value={images}
                             />
                     </div>
-                    <div className="picture-preview-container">
-                        {imagePreview ? (
+                    {imagePreview ? (
+                        <>
+                        <div className="picture-preview-container">
                             <img src={imagePreview} alt={petData.name} />
+                        </div>
+                        </>
                         ) : ( 
+                            <>
+                        <div className="picture-preview-container">
                             <img src={petData.picture} alt={petData.name} />
+                        </div>
+                            <h2>Please select a file</h2>
+                            </>
                         )}
-                    </div>
                     <button className="button button-white" type="submit">Submit</button>
                 </form>
             </div>
