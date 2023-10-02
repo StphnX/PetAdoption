@@ -177,9 +177,8 @@ function CreateAdd () {
     
           if (response.data) {
             console.log("Pet created successfully:", response.data);
-            // navigate(/pets/);
+            navigate(/pets/);
             console.log(response.data);
-            navigate("/profile");
             // Redirect or perform other actions after successful pet creation
           } else {
             console.error("Pet creation failed. Response:", response);
