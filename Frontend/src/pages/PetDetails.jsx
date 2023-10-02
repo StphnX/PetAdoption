@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import axios from "axios";
 import Menu from "../components/Menu";
+import Footer from "../components/Footer";
 
 function PetDetails() {
     const { id } = useParams()
@@ -28,23 +29,32 @@ function PetDetails() {
     return (
         <>
         <Menu />
+        <main className="content">
             {
                 !pet ? <p>Loading..</p> :
-                    <div className="pet-detail-container box">
+                <>
+                <div className="pet-detail-container">
+                    <div className="pet-picture-container box">
+                        <img src={pet.picture} alt={pet.name} />
                         <h1>{pet.name}</h1>
-                        <ul className="pet-detail-list">
-                            <li><img src={pet.picture} alt={pet.name} /></li>
-                            <li>Type: {pet.animal_type}</li>
-                            <li>Breed: {pet.breed}</li>
-                            <li>Age: {pet.age}</li>
-                            <li>Gender: {pet.gender}</li>
-                            <li>Health status: {pet.health_status}</li>
-                            <li>Located in: {pet.zipcode}</li>
-                            <li><p>Description: {pet.description}</p></li>
-                        </ul>
-                        <NavLink className="button contact-button" to="/newmessage">Contact</NavLink>
                     </div>
+                    <div className="pet-info-container">
+                        <ul className="pet-detail-list box">
+                            <li><span className="pet-detail">Type:</span> {pet.animal_type}</li>
+                            <li><span className="pet-detail">Breed:</span> {pet.breed}</li>
+                            <li><span className="pet-detail">Age:</span> {pet.age}</li>
+                            <li><span className="pet-detail">Gender:</span> {pet.gender}</li>
+                            <li><span className="pet-detail">Health:</span> {pet.health_status}</li>
+                            <li><span className="pet-detail">Located in:</span> {pet.zipcode}</li>
+                            <li><span className="pet-detail">Description:</span> {pet.description}</li>
+                            <NavLink className="button button-orange contact-owner-button" to="/messages">Contact the owner</NavLink>
+                        </ul>   
+                    </div>
+                </div>  
+                </>
             }
+        </main>
+        <Footer />
         </>
 
     );

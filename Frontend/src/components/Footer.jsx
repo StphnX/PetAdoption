@@ -5,8 +5,10 @@ function Footer (){
     return (
         <>
         <footer>
-            <p>Copyright here</p>
-            <p>Something here</p>
+            <div className="footer-content-container">
+                <p>Copyright here</p>
+                <p>Something here</p>
+            </div>
         </footer>
         </>
     );

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import AnimalCard from "../components/AnimalCard";
 import { NavLink } from "react-router-dom";
 import Menu from "../components/Menu";
+import Footer from "../components/Footer";
 
 
 
@@ -31,14 +32,17 @@ function Pets() {
     return (
         <>
         <Menu />
+        <main className="content">
             <h1 className="pets-page-heading">Pets currently looking for a new home:</h1>
-            <div className="animal-card-container">
-                {pets.map((pet, index) => (
-                    <NavLink key={index} to={`/pets/${pet._id}`}>
-                        <AnimalCard pet={pet}/>
-                    </NavLink>
-                ))}
-            </div>
+                <div className="animal-card-container">
+                    {pets.map((pet, index) => (
+                        <NavLink key={index} to={`/pets/${pet._id}`}>
+                            <AnimalCard pet={pet}/>
+                        </NavLink>
+                    ))}
+                </div>
+        </main>
+        <Footer />
         </>
     );
 }

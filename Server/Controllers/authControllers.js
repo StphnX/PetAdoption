@@ -86,7 +86,8 @@ const login_post = async (req, res) => {
             secure: false,
             path: '/',
         });
-        res.status(200).json({ user: user._id });
+        // res.status(200).json({ user: user._id });
+        res.status(200).json({ user_id: user._id, username: user.Username, email: user.email });
     }
     catch (err) {
         const errors = handleErrors(err);

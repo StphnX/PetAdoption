@@ -40,10 +40,11 @@ const ChatWindow = () => {
       </div>
         <input
           type="text"
+          className="box"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
-      <button onClick={sendMessage}>Send</button>
+      <button className="button button-white" onClick={sendMessage}>Send</button>
     </div>
   );
 };

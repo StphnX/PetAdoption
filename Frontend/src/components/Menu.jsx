@@ -22,27 +22,33 @@ function Menu() {
     //   };
 
     return (
-            <nav className="header-menu-bar">
-                <ul className="menu-links-container">
-                    <li><NavLink to="/about">about</NavLink></li>
-                    <li><NavLink  to="/">home</NavLink></li>
+        <nav className="header-menu-bar">
+            <div className="menu-content-container">
                 {user ? ( 
-                    <>
+                <>
+                <ul className="menu-links-container">
                     <li><NavLink  to="/messages">messages</NavLink></li>
                     <li><NavLink  to="/profile">profile</NavLink></li>
                     <li><NavLink  to="/pets">pets</NavLink></li>
                     <li><NavLink  to="/createadd">create an add</NavLink></li>
-                    <LogOut />
-                    </>
+                </ul>
+                <LogOut />
+                </>
                  ) : ( 
+                <>
+                <ul className="menu-links-container">
+                    <li><NavLink to="/about">about</NavLink></li>
+                    <li><NavLink  to="/">home</NavLink></li>
+                </ul>
                 <div className="log-in-container">
-                    <NavLink className="button sign-up" to="/signup">Sign up</NavLink>
-                     <NavLink className="button log-in" to="/login" cookie={cookies}>Log in</NavLink>
+                    <NavLink className="menu-button button" to="/signup">Sign up</NavLink>
+                     <NavLink className="menu-button button" to="/login" cookie={cookies}>Log in</NavLink>
                     <p>Adoptly Logo</p>
                 </div>
+                </>
                 )} 
-                </ul>
-            </nav>
+            </div>
+        </nav>
     );
 }
 

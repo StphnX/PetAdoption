@@ -7,9 +7,11 @@ function About () {
     return (
         <>
         <Menu />
-        <div>
-            <h1>Hello I'm an about page</h1>
-        </div>    
+        <main className="content">
+            <div>
+                <h1>Hello I'm an about page</h1>
+            </div>    
+        </main>
         <Footer />
         </>
     );
