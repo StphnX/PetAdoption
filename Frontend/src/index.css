@@ -568,3 +568,11 @@ a.contact-owner-button{
 .create-add-container textarea{
   flex: 2;
 }
+
+/*-------------------- About Page --------------------*/
+
+.about-page-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
