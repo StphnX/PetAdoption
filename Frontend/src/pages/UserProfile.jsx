@@ -18,6 +18,28 @@ function UserProfile () {
 
     }, []);
 
+    const handleDelete = async (petId) => {
+
+        const updatedPets = pets.filter((pet) => pet._id !== petId);
+        setPets(updatedPets);
+
+        try {
+
+            const response = await axios.delete(`http://localhost:3000/Pets/${petId}`);
+
+            if (response.status === 200) {
+                console.log(response.data);
+            }
+            else {
+                console.log("Pet couldnt get deleted");
+            }
+
+        }
+        catch (error) {
+            console.error(error);
+        }
+    }
+
     const fetchPets = async () => {
         try {
 
@@ -53,15 +75,19 @@ function UserProfile () {
                         <p>Username: {user.username}</p>
                         <p>Email: {user.email}</p>
                     </div>
-                    <div className="pet-ads-container">
-                        <h2>Your ads:</h2>
+                </div>
+                <h2>Your ads:</h2>
+                <div className="pet-ads-container">
                         {pets.map((singlePet, index) => (
-                            <NavLink key={index} to={`/pets/${singlePet._id}`}>
-                                <AnimalCard key={index} pet={singlePet}/>
-                            </NavLink>
+                            <div>
+                                <NavLink key={index} to={`/pets/${singlePet._id}`}>
+                                    <AnimalCard key={index} pet={singlePet}/>
+                                </NavLink>
+                                <button onClick={() => handleDelete(singlePet._id)} className="button button-white">Delete</button>
+                                <NavLink className="button button-white" key={index} to={`/editadd/${singlePet._id}`}>Edit</NavLink>
+                            </div>
                         ))}
                     </div>
-                </div>
             </main>
             <Footer />
         </>

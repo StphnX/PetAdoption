@@ -281,7 +281,7 @@ button.button:hover {
 }
 
 a.button:active,
-button.buton:active {
+button.button:active {
   transform: translate(2px, 2px);
   /* Move the button down and to the right */
 }
@@ -578,7 +578,13 @@ a.contact-owner-button {
 }
 
 .pet-ads-container {
-  flex: 2;
+  display: flex;
+  gap: 2em;
+}
+
+.pet-ads-container > div {
+  max-width: 25%;
+  flex: 1;
 }
 
 
