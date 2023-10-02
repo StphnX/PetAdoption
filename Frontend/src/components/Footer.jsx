@@ -1,4 +1,7 @@
 import React from "react";
+import GithubIcon from "./GithubIcon";
+import FacebookIcon from "./FacebookIcon";
+import InstagramIcon from "./InstagramIcon";
 
 function Footer (){
 
@@ -7,7 +10,11 @@ function Footer (){
         <footer>
             <div className="footer-content-container">
                 <p>Copyright © {new Date().getFullYear()} CleaTheShelters</p>
-                <p>Something here</p>
+                <div className="footer-icon-container">
+                    <InstagramIcon />
+                    <FacebookIcon />
+                    <GithubIcon />
+                </div>
             </div>
         </footer>
         </>

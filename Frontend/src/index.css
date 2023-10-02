@@ -7,9 +7,12 @@
 /*
   1. Use a more-intuitive box-sizing model.
 */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
+
 /*
   2. Remove default margin
 */
@@ -17,6 +20,7 @@
   margin: 0;
   padding: 0;
 }
+
 /*
   Typographic tweaks!
   3. Add accessible line-height
@@ -27,39 +31,57 @@ body {
   -webkit-font-smoothing: antialiased;
   padding: 0;
 }
+
 /*
   5. Improve media defaults
 */
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
+
 /*
   6. Remove built-in form typography styles
 */
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
+
 /*
   7. Avoid text overflows
 */
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   overflow-wrap: break-word;
 }
+
 /*
   8. Create a root stacking context
 */
-#root, #__next {
+#root,
+#__next {
   isolation: isolate;
 }
 
 #root {
   --mainFont: 'Calistoga', cursive;
   --textColor: #3a3042;
-  --backgroundColor:  #db9d47;
-  --accentColor:  #f9f5ec;
+  --backgroundColor: #db9d47;
+  --accentColor: #f9f5ec;
   --borderColor: #3a3042;
-  
+
   background-color: var(--backgroundColor);
   color: var(--textColor);
   font-family: var(--mainFont);
@@ -68,12 +90,14 @@ p, h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
 }
 
-html, body, #root{
+html,
+body,
+#root {
   height: 100%;
   background-color: #db9d47;
 }
 
-main.content{
+main.content {
   flex: 1 0 auto;
   width: 90%;
   margin: 4em auto;
@@ -92,21 +116,21 @@ li {
   color: var(--accentColor);
 }
 
-a{
+a {
   color: var(--textColor);
   text-decoration: none;
 }
 
-.menu-links-container a:hover{
+.menu-links-container a:hover {
   color: var(--backgroundColor);
 }
 
-h1.margin{
+h1.margin {
   text-align: center;
   margin: 1em;
 }
 
-main{
+main {
   flex-grow: 1;
 }
 
@@ -121,7 +145,7 @@ main{
   text-decoration: underline;
 }
 
-.container{
+.container {
   margin: auto;
 }
 
@@ -161,10 +185,23 @@ main{
   gap: 1.5em;
 }
 
-.menu-links-container a{
+.menu-links-container a {
   letter-spacing: 0.05em;
 }
 
+img.logo-image{
+  width: auto;
+  height: 50px;
+  padding: 0 1.5em;
+}
+
+.log-in-container {
+  align-items: center;
+}
+
+.menu-links-container a{
+  white-space: nowrap;
+}
 
 
 /*-------------------- Header --------------------*/
@@ -225,43 +262,48 @@ button.button {
 }
 
 a.button-white,
-button.button-white{
+button.button-white {
   background-color: var(--accentColor);
   box-shadow: 4px 4px var(--borderColor);
 }
 
 a.button-orange,
-button.button-orange{
+button.button-orange {
   background-color: var(--backgroundColor);
   box-shadow: 4px 4px var(--borderColor);
 }
 
 a.button:hover,
 button.button:hover {
-  transform: translate(2px, 2px); /* Move the button down and to the right */
+  transform: translate(2px, 2px);
+  /* Move the button down and to the right */
   cursor: pointer;
 }
 
 a.button:active,
-button.buton:active{
-  transform: translate(2px, 2px); /* Move the button down and to the right */
+button.buton:active {
+  transform: translate(2px, 2px);
+  /* Move the button down and to the right */
 }
 
 a.button-white:hover,
 button.button-white:hover {
-  transform: translate(2px, 2px);/* Move the button down and to the right */
+  transform: translate(2px, 2px);
+  /* Move the button down and to the right */
   box-shadow: 3px 3px var(--backgroundColor);
 }
 
 a.button-orange:hover,
 button.button-orange:hover {
-  transform: translate(2px, 2px);/* Move the button down and to the right */
+  transform: translate(2px, 2px);
+  /* Move the button down and to the right */
   box-shadow: 3px 3px var(--accentColor);
 }
 
 a.menu-button:hover,
-button.menu-button:hover{
-  transform: translate(2px, 2px);/* Move the button down and to the right */
+button.menu-button:hover {
+  transform: translate(2px, 2px);
+  /* Move the button down and to the right */
   box-shadow: 3px 3px var(--borderColor);
 }
 
@@ -279,34 +321,40 @@ button.menu-button:hover{
     flex-direction: column;
   }
 
-  .pics-container{
+  .pics-container {
     flex-direction: column;
     align-items: center;
   }
+
   .header-container {
     flex-direction: column-reverse;
   }
+
   .header-text-container {
     border: 2px solid var(--borderColor);
     border-radius: 0 0 10px 10px;
   }
+
   #header-img {
     border-radius: 10px 10px 0 0;
     border-bottom: none;
   }
-  .companion-container h2{
+
+  .companion-container h2 {
     padding: 1em 0 !important;
   }
+
   button[type="submit"] {
     width: 30% !important;
   }
+
   .animal-card-container {
     grid-template-columns: 1fr !important;
   }
 
 }
 
-button:hover{
+button:hover {
   cursor: pointer;
 }
 
@@ -331,14 +379,14 @@ button:hover{
 
 .animal-pic-container {
   /* width: 25%;  */
-  padding: 20px; 
-  position: relative; 
+  padding: 20px;
+  position: relative;
 }
 
 .animal-pic-container::after {
   /* content: ""; */
   display: block;
-  height: 60px; 
+  height: 60px;
   background-color: var(--accentColor);
   position: absolute;
   border-radius: 5px;
@@ -347,7 +395,7 @@ button:hover{
   right: 0;
 }
 
-figcaption{
+figcaption {
   text-align: center;
   padding: 1em;
 }
@@ -363,13 +411,19 @@ footer {
   background-color: var(--borderColor);
 }
 
-.footer-content-container{
+.footer-content-container {
   width: 90%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-} 
+}
+
+.footer-icon-container{
+  display: flex;
+  gap: 1em;
+  font-size: 1.5em;
+}
 
 /*-------------------- Contact Page --------------------*/
 
@@ -389,7 +443,7 @@ footer {
   flex-direction: column;
 }
 
-input, 
+input,
 textarea {
   line-height: 2em;
 }
@@ -415,11 +469,11 @@ input[type="checkbox"] {
   box-shadow: none;
 }
 
-input[type="radio"]{
+input[type="radio"] {
   margin: 0.2em;
 }
 
-button[type="submit"]{
+button[type="submit"] {
   width: 10%;
   align-self: center;
   margin: 1em;
@@ -442,7 +496,7 @@ button[type="submit"]{
   margin: 2em auto;
 }
 
-h1.pets-page-heading{
+h1.pets-page-heading {
   text-align: center;
   margin: 2em 0;
 }
@@ -464,32 +518,32 @@ h1.pets-page-heading{
 }
 
 .button.contact:hover,
-.button.contact:active{
+.button.contact:active {
   box-shadow: none;
 }
 
-.pet-detail-container{
+.pet-detail-container {
   display: flex;
-  align-items:start;
+  align-items: start;
   gap: 3em;
 }
 
-h2.pet-info-heading{
+h2.pet-info-heading {
   margin: 1em;
 }
 
-.pet-detail-list{
+.pet-detail-list {
   display: flex;
   flex-direction: column;
   gap: 1em;
   padding: 1em;
 }
 
-.pet-detail{
+.pet-detail {
   font-weight: bold;
 }
 
-a.contact-owner-button{
+a.contact-owner-button {
   width: normal;
   align-self: center;
 }
@@ -515,15 +569,15 @@ a.contact-owner-button{
 }
 
 
-.profile-info-container{
+.profile-info-container {
   flex: 2;
   display: flex;
   flex-direction: column;
-  text-align:start;
+  text-align: start;
   gap: 1em;
 }
 
-.pet-ads-container{
+.pet-ads-container {
   flex: 2;
 }
 
@@ -534,7 +588,7 @@ a.contact-owner-button{
   margin: 2em auto;
 }
 
-.message-form{
+.message-form {
   display: flex;
   flex-direction: column;
 }
@@ -554,7 +608,7 @@ a.contact-owner-button{
   justify-content: space-between;
 }
 
-.create-add-heading{
+.create-add-heading {
   text-align: center;
   margin-bottom: 2em;
 }
@@ -565,7 +619,7 @@ a.contact-owner-button{
 }
 
 .create-add-container input,
-.create-add-container textarea{
+.create-add-container textarea {
   flex: 2;
 }
 
