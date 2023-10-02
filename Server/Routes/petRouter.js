@@ -7,6 +7,7 @@ import {
     editPet,
     deletePet,
     getPetsByOwner,
+    uploadImage
 } from "../Controllers/petController.js";
 import multer from 'multer';
 
@@ -18,7 +19,8 @@ const petRouter = Router();
 petRouter.route("/allPets").get(getAllPets);
 petRouter.route("/Pet/:id").get(getSinglePet);
 petRouter.route("/:prop").get(getAllPetsByProp);
-petRouter.route("/Pets/create").post(upload.single('image'), postNewPet);
+petRouter.route("/Pets/create").post(postNewPet);
+petRouter.route("/Pets/upload-image").post(upload.single('image'), uploadImage);
 petRouter.route("/Pets/:id").put(editPet);
 petRouter.route("/Pets/:id").delete(deletePet);
 

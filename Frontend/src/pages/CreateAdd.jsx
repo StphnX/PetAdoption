@@ -71,7 +71,7 @@ function CreateAdd () {
             // After successfully uploading the image, use the returned imageUrl
             // in the formData to create the pet
             const completeFormData = {
-              ...formData,
+              ...petData,
               picture: imageResponse.data.imageUrl,
             };
       
@@ -85,12 +85,29 @@ function CreateAdd () {
       
             if (petResponse.data) {
               console.log("Pet created successfully:", petResponse.data);
-              // Redirect or perform other actions after successful pet creation
+              navigate("/pets/"+petResponse.data.data._id)
             } else {
               console.error("Pet creation failed. Response:", petResponse);
             }
           } catch (error) {
             console.error("Error:", error);
+            alert("Error creating pet: "+error);
+            if (error.response) {
+                // The request was made and the server responded with a status code
+                // that falls out of the range of 2xx
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+              } else if (error.request) {
+                // The request was made but no response was received
+                // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                // http.ClientRequest in node.js
+                console.log(error.request);
+              } else {
+                // Something happened in setting up the request that triggered an Error
+                console.log('Error', error.message);
+              }
+              console.log(error.config);
           }
     }
   
