@@ -1,7 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import axios from 'axios';
+import Menu from "../components/Menu";
+import Footer from "../components/Footer";
 
 function SignUp () {
 
@@ -86,23 +88,30 @@ function SignUp () {
 
     return (
         <>
-        <h1 className="margin">Create an account:</h1>
-            <form action="" className="sign-up-form" onSubmit={handleSubmit}>
-                <div className="input-container">
-                    <label htmlFor="email">Email:</label><br></br>
-                    <input className="box" type="email" name="email" id="email" value={formData.email} onChange={handleInputChange} />
-                </div>
-                <div className="input-container">
-                    <label htmlFor="pass">Password:</label><br></br>
-                    <input className="box" type="password" id="pass" name="password" value={formData.password} minLength="8" onChange={handleInputChange} />
-                </div>
-                <div className="input-container">
-                    <label htmlFor="username">Username:</label><br></br>
-                    <input className="box" type="text" id="username" name="Username" value={formData.Username} minLength="1" onChange={handleInputChange} />
-                </div>
-                {errorMessage && <div className="error-message">{errorMessage}</div>}
-                <button className="sign-up-form-button" type="submit">Submit</button>
-            </form>
+        <Menu />
+        <main className="content">
+            <div className="container">
+                <h1 className="margin">Create an account:</h1>
+                    <form action="" className="sign-up-form" onSubmit={handleSubmit}>
+                        <div className="input-container">
+                            <label htmlFor="email">Email:</label><br></br>
+                            <input className="box" type="email" name="email" id="email" value={formData.email} onChange={handleInputChange} />
+                        </div>
+                        <div className="input-container">
+                            <label htmlFor="pass">Password:</label><br></br>
+                            <input className="box" type="password" id="pass" name="password" value={formData.password} minLength="8" onChange={handleInputChange} />
+                        </div>
+                        <div className="input-container">
+                            <label htmlFor="username">Username:</label><br></br>
+                            <input className="box" type="text" id="username" name="Username" value={formData.Username} minLength="1" onChange={handleInputChange} />
+                        </div>
+                        {errorMessage && <div className="error-message">{errorMessage}</div>}
+                        <p className="link-to-login" >Already have an account? <NavLink className="underlined-link" to="/login">Log in instead</NavLink></p>
+                        <button className="button-white button" type="submit">Submit</button>
+                    </form>
+            </div>
+        </main>
+        <Footer />
         </>
     );
 }

@@ -1,16 +1,18 @@
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, NavLink } from "react-router-dom";
 import axios from "axios";
 axios.defaults.withCredentials = true;
 import { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { useAuth } from '../context/AuthContext';
+import Footer from "../components/Footer";
+import Menu from "../components/Menu";
 
 
 
 function LogIn () {
 
-    const { login } = useAuth();
+    const { login, user } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState("");
@@ -51,10 +53,12 @@ function LogIn () {
 
                  // Call the login function to set the user data in the context:
                  const userData = response.data;
+                 console.log(userData);
                  login(userData);
+                 console.log(user);
                  console.log(userData);
 
-                navigate('/')
+                navigate('/');
 
             } else {
                 console.error('Server error:', response.data);
@@ -73,7 +77,8 @@ function LogIn () {
 
     return (
         <>
-        <main>
+        <Menu />
+        <main className="content">
             <h1 className="margin">Log in to your account:</h1>
                 <form action="" className="sign-up-form" onSubmit={handleSubmit}>
                     <div className="input-container">
@@ -85,9 +90,13 @@ function LogIn () {
                         <input className="box" type="password" id="password" name="password" value={loginData.password} onChange={handleInputChange}/>
                     </div>
                     {errorMessage && <div className="error-message">{errorMessage}</div>}
-                    <button className="sign-up-form-button" type="submit">Submit</button>
+                    <p className="link-to-login" >Don't have an account yet? <NavLink className="underlined-link" to="/signup">Sign up instead</NavLink></p>
+                    <button className="button button-white" type="submit">Submit</button>
                 </form>
+                
         </main>
+        <Footer />
+
         </>
     );
 }

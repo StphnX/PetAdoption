@@ -3,12 +3,16 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 import { useState } from "react";
 import { useAuth } from '../context/AuthContext';
+import Menu from "../components/Menu";
+import Footer from "../components/Footer";
+import { useNavigate } from "react-router-dom";
 
 // import {Cloudinary} from "@cloudinary/url-gen";
 
 function CreateAdd () {
     const { user } = useAuth();
-    console.log(user.user);
+    console.log(user);
+    const navigate = useNavigate();
     const [fileData, setFileData] = useState(null);
     const [images, setImages] = useState("");
     const [petData, setPetData] = useState({
@@ -22,7 +26,7 @@ function CreateAdd () {
         zipcode: '',
         picture: 'here',
         description: '',
-        owner: user.user
+        owner: user.user_id
       });
 
     const handleChange = (event) => {
@@ -173,6 +177,9 @@ function CreateAdd () {
     
           if (response.data) {
             console.log("Pet created successfully:", response.data);
+            // navigate(/pets/);
+            console.log(response.data);
+            navigate("/profile");
             // Redirect or perform other actions after successful pet creation
           } else {
             console.error("Pet creation failed. Response:", response);
@@ -184,109 +191,125 @@ function CreateAdd () {
       };
         
     return (
-        <div>
-            <h2>Create New Pet</h2>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Name:</label>
-                    <input
-                        type="text"
-                        name="name"
-                        value={petData.name}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Age:</label>
-                    <input
-                        type="number"
-                        name="age"
-                        value={petData.number}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Gender:</label>
-                    <input
-                        type="text"
-                        name="gender"
-                        value={petData.gender}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Animal Type:</label>
-                    <input
-                        type="text"
-                        name="animal_type"
-                        value={petData.animal_type}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>health_status:</label>
-                    <input
-                        type="text"
-                        name="health_status"
-                        value={petData.health_status}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>address:</label>
-                    <input
-                        type="text"
-                        name="address"
-                        value={petData.address}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>zipcode:</label>
-                    <input
-                        type="text"
-                        name="zipcode"
-                        value={petData.zipcode}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>description:</label>
-                    <input
-                        type="text"
-                        name="description"
-                        value={petData.description}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <input
-                        type="hidden"
-                        name="userId"
-                        value={user.user}
-                    />
-                </div>
-                <input 
-                    type="file"
-                    accept="image/*" 
-                    onChange={(event) => {
-                        setFileData(event.target.files[0])
-                        setImages(event.target.value)
-                    }}
-                    value={images}
-                    />
-                {/* <button onClick={uploadImage}>Submit</button> */}
-                <button type="submit">Submit</button>
-            </form>
-        </div>
+        <>
+        <Menu />
+        <main className="content">
+            <div>
+                <h1 className="create-add-heading">Create an add for your pet</h1>
+                <form className="create-add-container" onSubmit={handleSubmit}>
+                    <div>
+                        <label>Name of the pet:</label>
+                        <input
+                            className="box"
+                            type="text"
+                            name="name"
+                            value={petData.name}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label>Age:</label>
+                        <input
+                            className="box"
+                            type="number"
+                            name="age"
+                            value={petData.number}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label>Gender:</label>
+                        <input
+                            className="box"
+                            type="text"
+                            name="gender"
+                            value={petData.gender}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label>Animal type:</label>
+                        <input
+                            className="box"
+                            type="text"
+                            name="animal_type"
+                            value={petData.animal_type}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label>Health status:</label>
+                        <input
+                            className="box"
+                            type="text"
+                            name="health_status"
+                            value={petData.health_status}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label>Description:</label>
+                        <textarea
+                            className="box"
+                            name="description"
+                            value={petData.description}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label>Street name and number:</label>
+                        <input
+                            className="box"
+                            type="tex"
+                            name="address"
+                            value={petData.address}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label>Postal code and City:</label>
+                        <input
+                            className="box"
+                            type="text"
+                            name="zipcode"
+                            value={petData.zipcode}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="hidden"
+                            name="userId"
+                            value={user.user_id}
+                        />
+                    </div>
+                    <div>
+                    <label>Upload a picture:</label>
+                        <input 
+                            type="file"
+                            accept="image/*" 
+                            onChange={(event) => {
+                                setFileData(event.target.files[0])
+                                setImages(event.target.value)
+                            }}
+                            value={images}
+                            />
+                    </div>
+                    {/* <button onClick={uploadImage}>Submit</button> */}
+                    <button className="button button-white" type="submit">Submit</button>
+                </form>
+            </div>
+        </main>
+        <Footer />
+        </>
     );
 }
 

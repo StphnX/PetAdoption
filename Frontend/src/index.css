@@ -15,6 +15,7 @@
 */
 * {
   margin: 0;
+  padding: 0;
 }
 /*
   Typographic tweaks!
@@ -24,6 +25,7 @@
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  padding: 0;
 }
 /*
   5. Improve media defaults
@@ -51,7 +53,7 @@ p, h1, h2, h3, h4, h5, h6 {
   isolation: isolate;
 }
 
-:root {
+#root {
   --mainFont: 'Calistoga', cursive;
   --textColor: #3a3042;
   --backgroundColor:  #db9d47;
@@ -61,34 +63,42 @@ p, h1, h2, h3, h4, h5, h6 {
   background-color: var(--backgroundColor);
   color: var(--textColor);
   font-family: var(--mainFont);
-  width: 90%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+}
+
+html, body, #root{
+  height: 100%;
+  background-color: #db9d47;
+}
+
+main.content{
+  flex: 1 0 auto;
+  width: 90%;
+  margin: 4em auto;
 }
 
 .content-container {
   max-width: 1280px;
 }
 
-button {
-  border-radius: 10px;
-  border: 2px solid var(--borderColor);
-  font-family: "Calistoga", cursive;
-  padding: 0.5em;
-  color: var(--textColor);
-  text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 5px 5px;
-}
 
 li {
   list-style-type: none;
 }
 
-a {
-  text-decoration: none;
+.menu-links-container a {
+  color: var(--accentColor);
+}
+
+a{
   color: var(--textColor);
+  text-decoration: none;
+}
+
+.menu-links-container a:hover{
+  color: var(--backgroundColor);
 }
 
 h1.margin{
@@ -107,20 +117,31 @@ main{
   border-radius: 10px;
 }
 
-/*-------------------- Menu bar --------------------*/
-
-a.log-in.button,
-a.sign-up.button{
-  background-color: var(--accentColor);
+.underlined-link {
+  text-decoration: underline;
 }
 
-.header-menu-bar {
-  width: 100%;
+.container{
+  margin: auto;
+}
+
+/*-------------------- Menu bar --------------------*/
+
+
+.menu-content-container {
+  width: 90%;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   padding: 1em;
   margin: 0 auto;
+  color: var(--accentColor);
+}
+
+.header-menu-bar {
+  width: 100%;
+  margin: 0 auto 2em auto;
+  background-color: var(--textColor);
 }
 
 .header-menu-bar p {
@@ -130,7 +151,7 @@ a.sign-up.button{
 
 .menu-link {
   text-decoration: none;
-  color: var(--textColor);
+  color: var(--accentColor);
   font-weight: bold;
   font-size: 1.2em;
 }
@@ -140,23 +161,27 @@ a.sign-up.button{
   gap: 1.5em;
 }
 
+.menu-links-container a{
+  letter-spacing: 0.05em;
+}
+
+
+
 /*-------------------- Header --------------------*/
 
 .header-container {
   width: 100%;
   text-align: center;
-  margin: 2em auto;
   display: flex;
   flex: 1;
   justify-content: space-between;
   height: 50vh;
-  /* border: 2px solid var(--borderColor); */
+  border-radius: 10px;
 }
 
 .header-img-container {
   width: 100%;
   height: auto;
-
 }
 
 .header-text-container {
@@ -164,13 +189,13 @@ a.sign-up.button{
   border-top: 2px solid var(--borderColor);
   border-bottom: 2px solid var(--borderColor);
   border-left: 2px solid var(--borderColor);
-  border-radius: 10px 0 0 10px;
   padding: 1em;
   display: flex;
   flex-direction: column;
   gap: 1em;
   align-items: center;
   justify-content: space-around;
+  border-radius: 10px 0 0 10px;
 }
 
 #header-img {
@@ -180,39 +205,64 @@ a.sign-up.button{
   border: 2px solid var(--borderColor);
 }
 
-a.button {
+a.menu-button,
+button.menu-button {
+  background-color: var(--accentColor);
+  box-shadow: 4px 4px var(--backgroundColor);
+}
+
+a.button,
+button.button {
   border-radius: 10px;
   margin: 1em 1em;
   font-family: "Calistoga", cursive;
   padding: 0.5em;
   border: 2px solid var(--borderColor);
-  background-color: var(--backgroundColor);
   color: var(--textColor);
-  box-shadow: 5px 5px;
   text-decoration: none;
   text-align: center;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
-a.button:hover {
+a.button-white,
+button.button-white{
+  background-color: var(--accentColor);
+  box-shadow: 4px 4px var(--borderColor);
+}
+
+a.button-orange,
+button.button-orange{
+  background-color: var(--backgroundColor);
+  box-shadow: 4px 4px var(--borderColor);
+}
+
+a.button:hover,
+button.button:hover {
   transform: translate(2px, 2px); /* Move the button down and to the right */
   cursor: pointer;
 }
 
-a.button:active {
+a.button:active,
+button.buton:active{
   transform: translate(2px, 2px); /* Move the button down and to the right */
 }
 
-.log-in:hover, 
-.sign-up:hover {
+a.button-white:hover,
+button.button-white:hover {
   transform: translate(2px, 2px);/* Move the button down and to the right */
   box-shadow: 3px 3px var(--backgroundColor);
 }
 
-.log-in:active, 
-.sign-up:active {
+a.button-orange:hover,
+button.button-orange:hover {
   transform: translate(2px, 2px);/* Move the button down and to the right */
-  box-shadow: 3px 3px var(--backgroundColor);
+  box-shadow: 3px 3px var(--accentColor);
+}
+
+a.menu-button:hover,
+button.menu-button:hover{
+  transform: translate(2px, 2px);/* Move the button down and to the right */
+  box-shadow: 3px 3px var(--borderColor);
 }
 
 .log-in-container {
@@ -221,15 +271,43 @@ a.button:active {
   justify-content: flex-end;
 }
 
-.button.cta-button {
-  background-color: var(--backgroundColor);
-  padding: 1em;
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+
+  #root {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pics-container{
+    flex-direction: column;
+    align-items: center;
+  }
+  .header-container {
+    flex-direction: column-reverse;
+  }
+  .header-text-container {
+    border: 2px solid var(--borderColor);
+    border-radius: 0 0 10px 10px;
+  }
+  #header-img {
+    border-radius: 10px 10px 0 0;
+    border-bottom: none;
+  }
+  .companion-container h2{
+    padding: 1em 0 !important;
+  }
+  button[type="submit"] {
+    width: 30% !important;
+  }
+  .animal-card-container {
+    grid-template-columns: 1fr !important;
+  }
+
 }
 
-.cta-button:hover, 
-.cta-button:active {
-  transform: translate(2px, 2px);/* Move the button down and to the right */
-  box-shadow: 3px 3px var(--accentColor);
+button:hover{
+  cursor: pointer;
 }
 
 /*-------------------- Homepage --------------------*/
@@ -279,12 +357,20 @@ figcaption{
 
 footer {
   width: 100%;
+  color: var(--accentColor);
   padding: 1.5em;
+  flex-shrink: 0;
+  background-color: var(--borderColor);
+}
+
+.footer-content-container{
+  width: 90%;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-shrink: 0;
-}
+} 
+
 /*-------------------- Contact Page --------------------*/
 
 .form-container {
@@ -363,19 +449,49 @@ h1.pets-page-heading{
 
 /*-------------------- Pet Details Page --------------------*/
 
-.pet-detail-container {
+.pet-picture-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 50vw;
-  margin: 2em auto;
   padding: 2em;
   gap: 1em;
+  flex: 1;
+}
+
+.pet-info-container {
+  flex: 2;
 }
 
 .button.contact:hover,
 .button.contact:active{
   box-shadow: none;
+}
+
+.pet-detail-container{
+  display: flex;
+  align-items:start;
+  gap: 3em;
+}
+
+h2.pet-info-heading{
+  margin: 1em;
+}
+
+.pet-detail-list{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 1em;
+}
+
+.pet-detail{
+  font-weight: bold;
+}
+
+a.contact-owner-button{
+  width: normal;
+  align-self: center;
 }
 
 /*-------------------- Message Page --------------------*/
@@ -384,7 +500,33 @@ h1.pets-page-heading{
 
 .user-profile-container {
   margin: 2em auto;
+  text-align: center;
+  display: flex;
+  gap: 5em;
 }
+
+.user-profile-picture {
+  border-radius: 50%;
+  flex: 1;
+  box-shadow: 5px 5px;
+  border: 2px solid var(--borderColor);
+  width: 25%;
+  height: auto;
+}
+
+
+.profile-info-container{
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  text-align:start;
+  gap: 1em;
+}
+
+.pet-ads-container{
+  flex: 2;
+}
+
 
 /*-------------------- Write Message --------------------*/
 
@@ -395,4 +537,34 @@ h1.pets-page-heading{
 .message-form{
   display: flex;
   flex-direction: column;
+}
+
+/*-------------------- Create Add Page --------------------*/
+
+.create-add-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
+.create-add-container div {
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+}
+
+.create-add-heading{
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.create-add-container label {
+  font-weight: bold;
+  flex: 1;
+}
+
+.create-add-container input,
+.create-add-container textarea{
+  flex: 2;
 }
