@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const petSchema = new Schema({
-
     name: { type: String, required: true },
     age: { type: Number, required: true },
     gender: { type: String, required: true },
@@ -12,15 +11,11 @@ const petSchema = new Schema({
     zipcode: { type: String, required: true },
     picture: { type: String, required: true },
     description: { type: String, required: true },
-    // picture: { type: String, required: true },
-    image: {
-        public_id: { type: String },
-        url: { type: String }
-    },
-    owner: { type: String, required: true }
-
-
-
+    owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
+      }
 });
 
 const PetModel = mongoose.model("Pet", petSchema);
