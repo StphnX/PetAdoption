@@ -6,7 +6,7 @@ function Footer (){
         <>
         <footer>
             <div className="footer-content-container">
-                <p>Copyright here</p>
+                <p>Copyright © {new Date().getFullYear()} CleaTheShelters</p>
                 <p>Something here</p>
             </div>
         </footer>

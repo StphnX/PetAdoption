@@ -27,6 +27,8 @@ function Menu() {
                 {user ? ( 
                 <>
                 <ul className="menu-links-container">
+                    <li><NavLink to="/about">about</NavLink></li>
+                    <li><NavLink  to="/">home</NavLink></li>
                     <li><NavLink  to="/messages">messages</NavLink></li>
                     <li><NavLink  to="/profile">profile</NavLink></li>
                     <li><NavLink  to="/pets">pets</NavLink></li>
