@@ -94,101 +94,101 @@ function CreateAdd () {
     //     }
     // }
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     try {
-    //         // First, upload the image
-    //         if (!fileData) {
-    //           console.error("No file selected");
-    //           return;
-    //         }
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            // First, upload the image
+            if (!fileData) {
+              console.error("No file selected");
+              return;
+            }
       
-    //         const imageFormData = new FormData();
-    //         imageFormData.append("image", fileData);
+            const imageFormData = new FormData();
+            imageFormData.append("image", fileData);
       
-    //         const imageResponse = await axios.post(
-    //           "http://localhost:3000/Pets/upload-image",
-    //           imageFormData,
-    //           {
-    //             withCredentials: true,
-    //             headers: {
-    //               "Content-Type": "multipart/form-data",
-    //             },
-    //           }
-    //         );
+            const imageResponse = await axios.post(
+              "http://localhost:3000/Pets/upload-image",
+              imageFormData,
+              {
+                withCredentials: true,
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+              }
+            );
       
-    //         if (!imageResponse.data || !imageResponse.data.imageUrl) {
-    //           console.error("Image upload failed. Response:", imageResponse);
-    //           return;
-    //         }
+            if (!imageResponse.data || !imageResponse.data.imageUrl) {
+              console.error("Image upload failed. Response:", imageResponse);
+              return;
+            }
       
-    //         // After successfully uploading the image, use the returned imageUrl
-    //         // in the formData to create the pet
-    //         const completeFormData = {
-    //           ...formData,
-    //           picture: imageResponse.data.imageUrl,
-    //         };
+            // After successfully uploading the image, use the returned imageUrl
+            // in the formData to create the pet
+            const completeFormData = {
+              ...formData,
+              picture: imageResponse.data.imageUrl,
+            };
       
-    //         const petResponse = await axios.post(
-    //           "http://localhost:3000/Pets/create",
-    //           completeFormData,
-    //           {
-    //             withCredentials: true,
-    //           }
-    //         );
+            const petResponse = await axios.post(
+              "http://localhost:3000/Pets/create",
+              completeFormData,
+              {
+                withCredentials: true,
+              }
+            );
       
-    //         if (petResponse.data) {
-    //           console.log("Pet created successfully:", petResponse.data);
-    //           // Redirect or perform other actions after successful pet creation
-    //         } else {
-    //           console.error("Pet creation failed. Response:", petResponse);
-    //         }
-    //       } catch (error) {
-    //         console.error("Error:", error);
-    //         // Handle errors as needed
-    //       }
+            if (petResponse.data) {
+              console.log("Pet created successfully:", petResponse.data);
+              // Redirect or perform other actions after successful pet creation
+            } else {
+              console.error("Pet creation failed. Response:", petResponse);
+            }
+          } catch (error) {
+            console.error("Error:", error);
+            // Handle errors as needed
+          }
 
 
     // }
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
     
-        try {
-          // Create a FormData object for the entire form
-          const formData = new FormData();
+    //     try {
+    //       // Create a FormData object for the entire form
+    //       const formData = new FormData();
     
-          // Append the image file to the FormData
-          if (fileData) {
-            formData.append("image", fileData);
-          }
+    //       // Append the image file to the FormData
+    //       if (fileData) {
+    //         formData.append("image", fileData);
+    //       }
     
-          // Append the pet data fields to the FormData
-          for (const key in petData) {
-            formData.append(key, petData[key]);
-          }
+    //       // Append the pet data fields to the FormData
+    //       for (const key in petData) {
+    //         formData.append(key, petData[key]);
+    //       }
     
-          // Make a single Axios POST request to upload the image and submit form data
-          const response = await axios.post("http://localhost:3000/Pets/create", formData, {
-            withCredentials: true,
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          });
+    //       // Make a single Axios POST request to upload the image and submit form data
+    //       const response = await axios.post("http://localhost:3000/Pets/create", formData, {
+    //         withCredentials: true,
+    //         headers: {
+    //           "Content-Type": "multipart/form-data",
+    //         },
+    //       });
     
-          if (response.data) {
-            console.log("Pet created successfully:", response.data);
-            // navigate(/pets/);
-            console.log(response.data);
-            navigate("/profile");
-            // Redirect or perform other actions after successful pet creation
-          } else {
-            console.error("Pet creation failed. Response:", response);
-          }
-        } catch (error) {
-          console.error("Error:", error);
-          // Handle errors as needed
-        }
-      };
+    //       if (response.data) {
+    //         console.log("Pet created successfully:", response.data);
+    //         // navigate(/pets/);
+    //         console.log(response.data);
+    //         navigate("/profile");
+    //         // Redirect or perform other actions after successful pet creation
+    //       } else {
+    //         console.error("Pet creation failed. Response:", response);
+    //       }
+    //     } catch (error) {
+    //       console.error("Error:", error);
+    //       // Handle errors as needed
+    //     }
+    //   };
         
     return (
         <>
