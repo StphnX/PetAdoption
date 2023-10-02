@@ -97,7 +97,8 @@ const login_post = async (req, res) => {
 }
 
 const logout_get = (req, res) => {
-    res.cookie('jwt', '', { maxAge: 1 });
+    console.log('Logout route reached'); // Debugging line
+    res.clearCookie('jwt');
     res.redirect('/');
 }
 
