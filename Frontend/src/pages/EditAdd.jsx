@@ -13,6 +13,7 @@ function EditAdd () {
     console.log(user);
     const navigate = useNavigate();
     const [fileData, setFileData] = useState(null);
+    const [imagePreview, setImagePreview] = useState(null);
     const [images, setImages] = useState("");
     const [petData, setPetData] = useState({
         name: '',
@@ -53,6 +54,22 @@ function EditAdd () {
             [name]: value
         })
     }
+
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        
+        if (file) {
+  
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            setImagePreview(event.target.result);
+          };
+          reader.readAsDataURL(file);
+        } else {
+          setImagePreview(null);
+        }
+      };
+    
     
 
     const handleSubmit = async (e) => {
@@ -243,9 +260,17 @@ function EditAdd () {
                             onChange={(event) => {
                                 setFileData(event.target.files[0])
                                 setImages(event.target.value)
+                                handleImageChange(event)
                             }}
                             value={images}
                             />
+                    </div>
+                    <div className="picture-preview-container">
+                        {imagePreview ? (
+                            <img src={imagePreview} alt={petData.name} />
+                        ) : ( 
+                            <img src={petData.picture} alt={petData.name} />
+                        )}
                     </div>
                     <button className="button button-white" type="submit">Submit</button>
                 </form>

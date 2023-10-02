@@ -636,3 +636,11 @@ a.contact-owner-button {
   flex-direction: column;
   gap: 1.5em;
 }
+
+/*-------------------- Edit Ad Page --------------------*/
+
+.picture-preview-container {
+  width: 25% !important;
+  border: 2px solid var(--borderColor);
+  
+}
