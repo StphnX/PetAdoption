@@ -27,12 +27,17 @@ function Menu() {
                 {user ? (
                     <>
                         <ul className="menu-links-container">
+                            <li><NavLink to="/about">about</NavLink></li>
+                            <li><NavLink to="/">home</NavLink></li>
                             <li><NavLink to="/messages">messages</NavLink></li>
                             <li><NavLink to="/profile">profile</NavLink></li>
                             <li><NavLink to="/pets">pets</NavLink></li>
                             <li><NavLink to="/createadd">create an add</NavLink></li>
                         </ul>
-                        <LogOut />
+                        <div className="log-in-container">
+                            <LogOut />
+                            <img className="logo-image" src="../src/assets/logo-no-background.png" alt="SiteLogo" />
+                        </div>
                     </>
                 ) : (
                     <>
@@ -43,7 +48,7 @@ function Menu() {
                         <div className="log-in-container">
                             <NavLink className="menu-button button" to="/signup">Sign up</NavLink>
                             <NavLink className="menu-button button" to="/login" cookie={cookies}>Log in</NavLink>
-                            <p><img className="logo-image" src="../src/assets/logo-color-preview.png" alt="SiteLogo" /></p>
+                            <img className="logo-image" src="../src/assets/logo-no-background.png" alt="SiteLogo" />
                         </div>
                     </>
                 )}

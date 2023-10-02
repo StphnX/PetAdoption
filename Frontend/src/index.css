@@ -189,6 +189,19 @@ main {
   letter-spacing: 0.05em;
 }
 
+img.logo-image{
+  width: auto;
+  height: 50px;
+  padding: 0 1.5em;
+}
+
+.log-in-container {
+  align-items: center;
+}
+
+.menu-links-container a{
+  white-space: nowrap;
+}
 
 
 /*-------------------- Header --------------------*/
@@ -404,6 +417,12 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.footer-icon-container{
+  display: flex;
+  gap: 1em;
+  font-size: 1.5em;
 }
 
 /*-------------------- Contact Page --------------------*/
