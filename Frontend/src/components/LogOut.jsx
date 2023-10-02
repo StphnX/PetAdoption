@@ -3,35 +3,35 @@ import axios from "axios";
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from "react-router-dom";
 
-function LogOut () {
+function LogOut() {
     const { user, logout } = useAuth();
     const navigate = useNavigate();
 
 
     const handleLogOut = async () => {
-        console.log("test");
+        // console.log("test");
 
         try {
             const response = await axios.get('http://localhost:3000/logout');
-      
+
             if (response.status === 200) {
                 logout();
                 console.log('User succesfully logged out');
                 navigate('/');
-    
+
             } else {
                 console.error('Server error:', response.data);
             }
-          } catch (error) {
-    
-                console.error('Server error: something went wrong');
-                
-            }
+        } catch (error) {
+
+            console.error('Server error: something went wrong');
+
+        }
     }
-    
-   
-    
-    return(
+
+
+
+    return (
         <>
             <button className="button menu-button" onClick={handleLogOut}>Log out</button>
         </>

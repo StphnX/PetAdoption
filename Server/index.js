@@ -46,14 +46,14 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use("/", petRouter);
 
-const server = createServer(app); 
+const server = createServer(app);
 initializeSocketServer(server);
 
 
 app.use("/io", chatRouter);
-app.use(authRoutes);
-app.use("/user", userRouter)
-app.get('*', checkUser);
+app.use("/", petRouter); // Your pet routes
+app.use(authRoutes);     // Your authentication routes
+app.get('*', checkUser); // Check user middleware
 
 // error handling middleware
 app.use(errorHandler);
