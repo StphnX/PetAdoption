@@ -604,8 +604,10 @@ a.contact-owner-button {
   flex: 2;
 }
 
-.logo-image {
-  height: 100px;
-  width: 200px;
-  padding: 0;
+/*-------------------- About Page --------------------*/
+
+.about-page-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
 }
