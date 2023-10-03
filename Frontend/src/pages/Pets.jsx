@@ -11,10 +11,15 @@ import Footer from "../components/Footer";
 function Pets() {
 
     const [pets, setPets] = useState([]);
+    const [filterCriteria, setFilterCriteria] = useState("");
 
     useEffect(() => {
         getPets();
       }, []);
+
+      const handleFilterChange = (event) => {
+        setFilterCriteria(event.target.value);
+      };
 
       const getPets = async () => {
 
@@ -33,6 +38,11 @@ function Pets() {
         <>
         <Menu />
         <main className="content">
+        <select onChange={handleFilterChange}>
+            <option value="">All Pets</option>
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+        </select>
             <h1 className="pets-page-heading">Pets currently looking for a new home:</h1>
                 <div className="animal-card-container">
                     {pets.map((pet, index) => (
