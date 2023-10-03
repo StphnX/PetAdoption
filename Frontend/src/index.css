@@ -501,6 +501,11 @@ h1.pets-page-heading {
   margin: 2em 0;
 }
 
+.to-uppercase::first-letter{
+  text-transform: uppercase;
+}
+
+
 /*-------------------- Pet Details Page --------------------*/
 
 .pet-picture-container {
@@ -642,5 +647,5 @@ a.contact-owner-button {
 .picture-preview-container {
   width: 25% !important;
   border: 2px solid var(--borderColor);
-  
+
 }
