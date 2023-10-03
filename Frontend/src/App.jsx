@@ -16,6 +16,7 @@ import Message from './components/Message';
 import UserProfile from './pages/UserProfile';
 import WriteMessage from './components/WriteMessage';
 import NotFound from './pages/NotFound';
+import EditAdd from './pages/EditAdd';
 import { AuthProvider } from './context/AuthContext';
 
 
@@ -33,6 +34,7 @@ function App() {
         <Route path='/login' element={<LogIn />} />
         <Route path='/about' element={<About />} />
         <Route path='/createadd' element={<CreateAdd />} />
+        <Route path='/editadd/:id' element={<EditAdd />} />
         <Route path='/messages' element={<Messages />} />
         <Route path='/pets' element={<Pets />} />
         <Route path='/pets/:id' element={<PetDetails />} />

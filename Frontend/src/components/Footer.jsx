@@ -9,7 +9,7 @@ function Footer (){
         <>
         <footer>
             <div className="footer-content-container">
-                <p>Copyright © {new Date().getFullYear()} CleaTheShelters</p>
+                <p>Copyright © {new Date().getFullYear()} ClearTheShelter</p>
                 <div className="footer-icon-container">
                     <InstagramIcon />
                     <FacebookIcon />

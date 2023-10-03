@@ -1,18 +1,21 @@
 import React from "react";
 import axios from "axios";
 axios.defaults.withCredentials = true;
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from '../context/AuthContext';
 import Menu from "../components/Menu";
 import Footer from "../components/Footer";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-function CreateAdd () {
+function EditAdd () {
+    const { id } = useParams();
     const { user } = useAuth();
     console.log(user);
     const navigate = useNavigate();
     const [fileData, setFileData] = useState(null);
+    const [imagePreview, setImagePreview] = useState(null);
     const [images, setImages] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
     const [petData, setPetData] = useState({
         name: '',
         age: 0,
@@ -26,6 +29,24 @@ function CreateAdd () {
         owner: user.user_id
       });
 
+      useEffect(() => {
+       
+        fetchPet(id);
+     
+      }, []);
+
+
+    const fetchPet = async (id) => {
+        try {
+      
+            const { data } = await axios.get(`http://localhost:3000/Pet/${id}`);
+            setPetData(data);
+    
+            } catch (error) {
+                console.error('Error getting pet: ', error.message);
+            }
+    }
+
     const handleChange = (event) => {
         const {name, value} = event.target;
 
@@ -35,9 +56,21 @@ function CreateAdd () {
         })
     }
 
-    const handleFileChange = (event) => {
-        setFileData(event.target.files[0]);
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        
+        if (file) {
+  
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            setImagePreview(event.target.result);
+          };
+          reader.readAsDataURL(file);
+        } else {
+          setImagePreview(null);
+        }
       };
+    
     
 
     const handleSubmit = async (e) => {
@@ -45,10 +78,9 @@ function CreateAdd () {
         try {
             // First, upload the image
             if (!fileData) {
-              console.error("No file selected");
+              setErrorMessage("Please upload a picture");
               return;
             }
-      
             const imageFormData = new FormData();
             imageFormData.append("image", fileData);
       
@@ -74,9 +106,9 @@ function CreateAdd () {
               ...petData,
               picture: imageResponse.data.imageUrl,
             };
-      
-            const petResponse = await axios.post(
-              "http://localhost:3000/Pets/create",
+           
+            const petResponse = await axios.put(
+              `http://localhost:3000/Pets/${id}`,
               completeFormData,
               {
                 withCredentials: true,
@@ -84,14 +116,14 @@ function CreateAdd () {
             );
       
             if (petResponse.data) {
-              console.log("Pet created successfully:", petResponse.data);
-              navigate("/pets/"+petResponse.data.data._id)
+              console.log("Pet edited successfully:", petResponse.data);
+              navigate(`/pets/${id}`);
             } else {
-              console.error("Pet creation failed. Response:", petResponse);
+              console.error("Pet edition failed. Response:", petResponse);
             }
           } catch (error) {
             console.error("Error:", error);
-            alert("Error creating pet: "+error);
+            alert("Error editing pet: "+error);
             if (error.response) {
                 // The request was made and the server responded with a status code
                 // that falls out of the range of 2xx
@@ -110,13 +142,15 @@ function CreateAdd () {
               console.log(error.config);
           }
     }
+
+
   
     return (
         <>
         <Menu />
         <main className="content">
             <div>
-                <h1 className="create-add-heading">Create an add for your pet</h1>
+                <h1 className="create-add-heading">Edit the pet ad:</h1>
                 <form className="create-add-container" onSubmit={handleSubmit}>
                     <div>
                         <label>Name of the pet:</label>
@@ -125,6 +159,7 @@ function CreateAdd () {
                             type="text"
                             name="name"
                             value={petData.name}
+                            defaultValue={petData.name}
                             onChange={handleChange}
                             required
                         />
@@ -135,7 +170,8 @@ function CreateAdd () {
                             className="box"
                             type="number"
                             name="age"
-                            value={petData.number}
+                            value={petData.age}
+                            defaultValue={petData.age}
                             onChange={handleChange}
                             required
                         />
@@ -147,6 +183,7 @@ function CreateAdd () {
                             type="text"
                             name="gender"
                             value={petData.gender}
+                            defaultValue={petData.gender}
                             onChange={handleChange}
                             required
                         />
@@ -158,6 +195,7 @@ function CreateAdd () {
                             type="text"
                             name="animal_type"
                             value={petData.animal_type}
+                            defaultValue={petData.animal_type}
                             onChange={handleChange}
                             required
                         />
@@ -169,6 +207,7 @@ function CreateAdd () {
                             type="text"
                             name="health_status"
                             value={petData.health_status}
+                            defaultValue={petData.health_status}
                             onChange={handleChange}
                             required
                         />
@@ -179,6 +218,7 @@ function CreateAdd () {
                             className="box"
                             name="description"
                             value={petData.description}
+                            defaultValue={petData.description}
                             onChange={handleChange}
                             required
                         />
@@ -190,6 +230,7 @@ function CreateAdd () {
                             type="tex"
                             name="address"
                             value={petData.address}
+                            defaultValue={petData.address}
                             onChange={handleChange}
                             required
                         />
@@ -201,6 +242,7 @@ function CreateAdd () {
                             type="text"
                             name="zipcode"
                             value={petData.zipcode}
+                            defaultValue={petData.zipcode}
                             onChange={handleChange}
                             required
                         />
@@ -216,16 +258,29 @@ function CreateAdd () {
                     <label>Upload a picture:</label>
                         <input 
                             type="file"
-                            className="button button-white"
                             accept="image/*" 
                             onChange={(event) => {
                                 setFileData(event.target.files[0])
                                 setImages(event.target.value)
+                                handleImageChange(event)
                             }}
                             value={images}
                             />
                     </div>
-                    {/* <button onClick={uploadImage}>Submit</button> */}
+                    {imagePreview ? (
+                        <>
+                        <div className="picture-preview-container">
+                            <img src={imagePreview} alt={petData.name} />
+                        </div>
+                        </>
+                        ) : ( 
+                            <>
+                        <div className="picture-preview-container">
+                            <img src={petData.picture} alt={petData.name} />
+                        </div>
+                            <h2>Please select a file</h2>
+                            </>
+                        )}
                     <button className="button button-white" type="submit">Submit</button>
                 </form>
             </div>
@@ -236,4 +291,4 @@ function CreateAdd () {
 }
 
 
-export default CreateAdd;
+export default EditAdd;
