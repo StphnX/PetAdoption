@@ -15,7 +15,7 @@ function Pets() {
 
     useEffect(() => {
         getPets();
-      }, []);
+      }, [filterCriteria]);
 
       const handleFilterChange = (event) => {
         setFilterCriteria(event.target.value);
@@ -24,7 +24,14 @@ function Pets() {
       const getPets = async () => {
 
         try {
-            const { data } = await axios.get('http://localhost:3000/allPets');
+            let url = 'http://localhost:3000/allPets';
+
+            if (filterCriteria) {
+              url = `http://localhost:3000/Pets/${filterCriteria}`;
+              console.log(filterCriteria);
+            }
+        
+            const { data } = await axios.get(url);
             setPets(data);
             console.log(pets);
 
@@ -38,12 +45,12 @@ function Pets() {
         <>
         <Menu />
         <main className="content">
-        <select onChange={handleFilterChange}>
+        <select className="box criteria-select" onChange={handleFilterChange}>
             <option value="">All Pets</option>
             <option value="dog">Dog</option>
             <option value="cat">Cat</option>
         </select>
-            <h1 className="pets-page-heading">Pets currently looking for a new home:</h1>
+           {!filterCriteria ? <h1 className="pets-page-heading">Pets currently looking for a new home:</h1> : <h1 className="pets-page-heading to-uppercase">{filterCriteria}s currently looking for a new home:</h1>}
                 <div className="animal-card-container">
                     {pets.map((pet, index) => (
                         <NavLink key={index} to={`/pets/${pet._id}`}>
