@@ -18,7 +18,7 @@ const petRouter = Router();
 // Routes for pets
 petRouter.route("/allPets").get(getAllPets);
 petRouter.route("/Pet/:id").get(getSinglePet);
-petRouter.route("/:prop").get(getAllPetsByProp);
+petRouter.route("/Pets/:prop").get(getAllPetsByProp);
 petRouter.route("/Pets/create").post(postNewPet);
 petRouter.route("/Pets/upload-image").post(upload.single('image'), uploadImage);
 petRouter.route("/Pets/:id").put(editPet);

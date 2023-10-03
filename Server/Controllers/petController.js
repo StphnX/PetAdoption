@@ -47,14 +47,12 @@ const getSinglePet = asyncHandler(async (req, res) => {
 
 const getAllPetsByProp = asyncHandler(async (req, res, next) => {
     try {
-        const { animal_type } = req.query;
+        const { prop } = req.params;
 
-        // Construct a filter object based on the provided query parameter
-        const filter = {};
-
-        if (animal_type) {
-            filter.animal_type = animal_type;
-        }
+        // Construct a filter object based on the dynamic route parameter
+        const filter = {
+            animal_type: prop, // Use the dynamic parameter as the value for "animal_type"
+        };
 
         // Query the MongoDB collection using the filter
         const pets = await PetModel.find(filter).exec();
