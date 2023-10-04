@@ -15,7 +15,7 @@ function PetDetails() {
 
     const getPet = async () => {
         try {
-            const { data } = await axios.get(`http://localhost:3000/Pet/${id}`);
+            const { data } = await axios.get(`https://mern-pet-adoption.onrender.com/Pet/${id}`);
             setPet(data);
             console.log(data);
 

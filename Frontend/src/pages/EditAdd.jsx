@@ -39,7 +39,7 @@ function EditAdd () {
     const fetchPet = async (id) => {
         try {
       
-            const { data } = await axios.get(`http://localhost:3000/Pet/${id}`);
+            const { data } = await axios.get(`https://mern-pet-adoption.onrender.com/Pet/${id}`);
             setPetData(data);
     
             } catch (error) {
@@ -85,7 +85,7 @@ function EditAdd () {
             imageFormData.append("image", fileData);
       
             const imageResponse = await axios.post(
-              "http://localhost:3000/Pets/upload-image",
+              "https://mern-pet-adoption.onrender.com/Pets/upload-image",
               imageFormData,
               {
                 withCredentials: true,
@@ -108,7 +108,7 @@ function EditAdd () {
             };
            
             const petResponse = await axios.put(
-              `http://localhost:3000/Pets/${id}`,
+              `https://mern-pet-adoption.onrender.com/Pets/${id}`,
               completeFormData,
               {
                 withCredentials: true,

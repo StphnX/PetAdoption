@@ -25,7 +25,7 @@ function UserProfile () {
 
         try {
 
-            const response = await axios.delete(`http://localhost:3000/Pets/${petId}`);
+            const response = await axios.delete(`https://mern-pet-adoption.onrender.com/Pets/${petId}`);
 
             if (response.status === 200) {
                 console.log(response.data);
@@ -43,7 +43,7 @@ function UserProfile () {
     const fetchPets = async () => {
         try {
 
-          const response = await axios.get(`http://localhost:3000/allPets/${user.user_id}`);
+          const response = await axios.get(`https://mern-pet-adoption.onrender.com/allPets/${user.user_id}`);
 
           if (response.status === 200) {
               console.log(response.data);

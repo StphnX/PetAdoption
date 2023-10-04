@@ -32,7 +32,7 @@ function SignUp () {
         try {
             const jsonData = JSON.stringify(formData);
             const response = await axios.post(
-                'http://localhost:3000/signup',
+                'https://mern-pet-adoption.onrender.com/signup',
                 jsonData,
                 {
                     headers:{
