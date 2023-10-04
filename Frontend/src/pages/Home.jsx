@@ -18,7 +18,7 @@ function Home () {
       const getPets = async () => {
 
         try {
-            const { data } = await axios.get('http://localhost:3000/allPets');
+            const { data } = await axios.get('https://mern-pet-adoption.onrender.com/allPets');
             setPets(data);
             // console.log(pets);
 

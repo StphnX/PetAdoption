@@ -24,10 +24,10 @@ function Pets() {
       const getPets = async () => {
 
         try {
-            let url = 'http://localhost:3000/allPets';
+            let url = 'https://mern-pet-adoption.onrender.com/allPets';
 
             if (filterCriteria) {
-              url = `http://localhost:3000/Pets/${filterCriteria}`;
+              url = `https://mern-pet-adoption.onrender.com/Pets/${filterCriteria}`;
               console.log(filterCriteria);
             }
         

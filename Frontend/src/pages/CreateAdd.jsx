@@ -53,7 +53,7 @@ function CreateAdd () {
             imageFormData.append("image", fileData);
       
             const imageResponse = await axios.post(
-              "http://localhost:3000/Pets/upload-image",
+              "https://mern-pet-adoption.onrender.com/Pets/upload-image",
               imageFormData,
               {
                 withCredentials: true,
@@ -76,7 +76,7 @@ function CreateAdd () {
             };
       
             const petResponse = await axios.post(
-              "http://localhost:3000/Pets/create",
+              "https://mern-pet-adoption.onrender.com/Pets/create",
               completeFormData,
               {
                 withCredentials: true,
