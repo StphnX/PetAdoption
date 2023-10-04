@@ -12,7 +12,7 @@ function LogOut() {
         // console.log("test");
 
         try {
-            const response = await axios.get('http://localhost:3000/logout');
+            const response = await axios.get('https://mern-pet-adoption.onrender.com/logout');
 
             if (response.status === 200) {
                 logout();
