@@ -142,25 +142,19 @@ function CreateAdd () {
                     </div>
                     <div>
                         <label>Gender:</label>
-                        <input
-                            className="box"
-                            type="text"
-                            name="gender"
-                            value={petData.gender}
-                            onChange={handleChange}
-                            required
-                        />
+                        <select className="box" onChange={handleChange} value={petData.gender} name="gender" required>
+                            <option value="" selected disabled>select gender</option>
+                            <option value="female">female</option>
+                            <option value="male">male</option>
+                        </select>
                     </div>
                     <div>
                         <label>Animal type:</label>
-                        <input
-                            className="box"
-                            type="text"
-                            name="animal_type"
-                            value={petData.animal_type}
-                            onChange={handleChange}
-                            required
-                        />
+                        <select className="box" onChange={handleChange} value={petData.animal_type} name="animal_type" required>
+                            <option value="" selected disabled>select type</option>
+                            <option value="dog">dog</option>
+                            <option value="cat">cat</option>
+                        </select>
                     </div>
                     <div>
                         <label>Health status:</label>
