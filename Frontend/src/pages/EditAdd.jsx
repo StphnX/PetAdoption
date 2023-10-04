@@ -274,12 +274,9 @@ function EditAdd () {
                         </div>
                         </>
                         ) : ( 
-                            <>
-                        <div className="picture-preview-container">
-                            <img src={petData.picture} alt={petData.name} />
-                        </div>
-                            <h2>Please select a file</h2>
-                            </>
+
+                        <h2>Please select a file</h2>
+                    
                         )}
                     <button className="button button-white" type="submit">Submit</button>
                 </form>

@@ -13,7 +13,7 @@ function About () {
                 <p>
                 A heartfelt initiative born out of a shared passion for animal welfare. Our web app, created by Susanna and Stephan during our web development bootcamp, aims to reshape the way we connect loving pet owners with compassionate individuals seeking to adopt furry companions.
                 </p>
-                <h2>The Inspiration Behind ClearTheShelters</h2>
+                <h2>The Inspiration Behind ClearTheShelter</h2>
                 <p>Stephan, drawing from his personal experience working in an animal shelter, witnessed the overcrowding and the plight of countless animals searching for their forever homes. It was during this time that he recognized the need for a more direct and efficient way to facilitate pet adoptions. Thus, the concept of ClearTheShelter was born. ClearTheShelter is designed as a compassionate alternative to traditional animal shelters. It provides a platform where pet owners can connect with potential adopters directly, eliminating the need for animals to pass through the often stressful shelter environment.</p>
                 <h2>How It Works</h2>
                 <p>Upon registration, users can create listings for pets they wish to put up for adoption. These listings include all the essential details about the pet, from breed and age to personality traits and special requirements.</p>

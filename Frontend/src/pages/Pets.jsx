@@ -45,11 +45,14 @@ function Pets() {
         <>
         <Menu />
         <main className="content">
-        <select className="box criteria-select" onChange={handleFilterChange}>
-            <option value="">All Pets</option>
-            <option value="dog">Dog</option>
-            <option value="cat">Cat</option>
-        </select>
+        <div className="pet-selection-container">
+            <h2>Select pet type:</h2>
+            <select className="box criteria-select" onChange={handleFilterChange}>
+                <option value="">All Pets</option>
+                <option value="dog">Dogs</option>
+                <option value="cat">Cats</option>
+            </select>
+        </div>
            {!filterCriteria ? <h1 className="pets-page-heading">Pets currently looking for a new home:</h1> : <h1 className="pets-page-heading to-uppercase">{filterCriteria}s currently looking for a new home:</h1>}
                 <div className="animal-card-container">
                     {pets.map((pet, index) => (
