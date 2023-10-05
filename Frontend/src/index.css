@@ -364,6 +364,7 @@ button:hover {
   display: flex;
   gap: 4em;
   margin-bottom: 3em;
+  justify-content: center;
 }
 
 .companion-container {
@@ -385,6 +386,10 @@ img.animal-pic {
   /* width: 25%;  */
   padding: 20px;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .animal-pic-container::after {
